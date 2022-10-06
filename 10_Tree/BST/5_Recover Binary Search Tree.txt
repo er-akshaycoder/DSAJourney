@@ -1,0 +1,71 @@
+/*
+Name: Recover Binary Search Tree
+Statement:
+You are given the root of a binary search tree (BST), where the values of exactly two nodes of the tree were swapped
+by mistake. Recover the tree without changing its structure.
+
+Example:
+             10
+            /  \
+           5    8
+          / \   /\
+         2   20 12 25
+
+In the above tree, nodes 20 and 8 must be swapped to fix the tree.
+Following is the output tree
+                  10
+                 /  \
+                5    20
+               / \
+              2   8
+
+1. Method: Inorder Traversal
+    1. Find in-order traversal of given Tree
+    2. In : 2 5 20 10 12 8 25
+    3. Here, if you carefully noticed, after 20, 10 is there that means 20 is at wrong place and same for 8
+    4. Hence, we need to find out such two cases.
+    5. Note: Special care is needed when adjacent nodes are misplaced, Example (Leetcode's Example)
+
+*/
+// Solution:
+class Solution {
+public:
+    void swap(int &x, int &y)
+    {
+        int temp = x;
+        x = y;
+        y = temp;
+    }
+    void findWrongNodes(TreeNode *root, TreeNode *&prev, TreeNode *&first, TreeNode *&middle, TreeNode *&second)
+    {
+        if(!root)       return;
+
+        findWrongNodes(root -> left, prev, first, middle, second);
+
+        if(prev && prev -> val > root -> val)
+        {
+            if(!first)
+            {
+                first = prev;
+                middle = root;
+            }
+            else
+                second = root;
+        }
+        prev = root;
+
+        findWrongNodes(root -> right, prev, first, middle, second);
+    }
+    void recoverTree(TreeNode* root)
+    {
+        TreeNode *prev, *first, *middle, *second;
+
+        prev = first = middle = second = NULL;
+        findWrongNodes(root, prev, first, middle, second);
+
+        if(first && second)
+            swap(first -> val, second -> val);
+        else
+            swap(first -> val, middle -> val);
+    }
+};

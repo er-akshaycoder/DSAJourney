@@ -1,0 +1,61 @@
+/*
+Name: Search in Rotated Sorted Array II
+Statement:
+There is an integer array nums sorted in non-decreasing order (not necessarily with distinct values).
+
+Example 1:
+Input: nums = [2,5,6,0,0,1,2], target = 0
+Output: true
+
+Example 2:
+Input: nums = [1,0,1,1,1], target = 0
+Output: true
+
+Note: Duplicates are allowed.
+
+1. Method: Binary Search-I
+    1. Use binary search Single pass approach as already known, but here need to handle duplicates separately.
+    2. If element at mid is same as element at low and high, then discard 3 elements as array[mid] is not a target.
+    3. Else, use our regular approach.
+*/
+// Solution:
+
+class Solution {
+public:
+    bool search(vector<int>& nums, int target)
+    {
+        int low = 0, high = nums.size() - 1;
+
+        while(low <= high)
+        {
+            int mid = (low + high) / 2;
+
+            if(nums[mid] == target)
+                return true;
+
+            if(nums[low] == nums[mid] && nums[mid] == nums[high])
+            {
+                low += 1;
+                high -= 1;
+                continue;
+            }
+
+            if(nums[low] <= nums[mid])
+            {
+                if(nums[low] <= target && target < nums[mid])
+                    high = mid - 1;
+                else
+                    low = mid + 1;
+            }
+            else
+            {
+                if(nums[mid] < target && target <= nums[high])
+                    low = mid + 1;
+                else
+                    high = mid - 1;
+            }
+        }
+
+        return false;
+    }
+};

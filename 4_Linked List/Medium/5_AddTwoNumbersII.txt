@@ -1,0 +1,71 @@
+/*
+Name: Add Two Numbers II
+Statement:
+You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first
+and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+Example 1:
+Input: l1 = [7,2,4,3], l2 = [5,6,4]
+Output: [7,8,0,7]
+
+Method 1: Reversing
+1. Reverse both lists and for output list, use whichever is maximum from input two lists.
+
+Method 1: Stack
+1. In question, they asked not to reverse a list. So instead of reversing a list, use stack.
+
+*/
+//Implementation:
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head, int *n)
+    {
+        ListNode *temp, *back, *mid;
+        temp = head;
+        back = NULL;
+
+        while(temp)
+        {
+            mid = temp;
+            temp = temp -> next;
+            mid -> next = back;
+            back = mid;
+            *n += 1;
+        }
+
+        return back;
+    }
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2)
+    {
+        int n1 = 0, n2 = 0, digit1, digit2, result, carry = 0;
+        ListNode *temp1, *temp2, *first, *temp, *prev;
+
+        l1 = reverseList(l1, &n1);
+        l2 = reverseList(l2, &n2);
+        first = n1 > n2 ? l1 : l2;
+        temp = first;
+        temp1 = l1;
+        temp2 = l2;
+
+        while(temp)
+        {
+            digit1 = temp1 ? temp1 -> val : 0;
+            digit2 = temp2 ? temp2 -> val : 0;
+
+            result = digit1 + digit2 + carry;
+            carry = result / 10;
+            temp -> val = result % 10;
+            temp1 = temp1 ? temp1 -> next : NULL;
+            temp2 = temp2 ? temp2 -> next : NULL;
+            prev = temp;
+            temp = temp -> next;
+        }
+        if(carry)
+            prev -> next = new ListNode(carry);
+
+        return reverseList(first, &n1);
+    }
+};
+
+

@@ -1,0 +1,76 @@
+/*
+Name: Word Subsets
+Statement:
+You are given two string arrays words1 and words2.
+A string b is a subset of string a if every letter in b occurs in a including multiplicity. For example, "wrr" is a
+subset of "warrior" but is not a subset of "world".
+A string a from words1 is universal if for every string b in words2, b is a subset of a.
+Return an array of all the universal strings in words1. You may return the answer in any order.
+Example 1:
+Input: words1 = ["amazon","apple","facebook","google","leetcode"], words2 = [
+"e","o"]
+Output: ["facebook","google","leetcode"]
+
+Note:
+N = words1.size(), M = words2.size()
+
+1. Method 1: Brute Force
+1. For each string from words1, check it satisfies the superset property with all string from words2
+Complexity:
+    T = (N*M);
+
+2. Method 2: Inefficient Hashtable
+1. Scan the words1 and for each word do below steps.
+2. Store frequency of characters of scanned string in array.
+3. Store frequency of characters of each string from words2 for each iteration.
+4. Scan words1[i] and check its frequency match in both hashtables.
+Complexity:
+    T = (N*M);
+
+3. Method 3: Hashtable
+1. We can reduce the 3rd step of above solution by storing frequency of characters of all string from words2 at initially.
+2. While storing, we have to consider maximum of occurrence of a character from all strings.
+Complexity:
+    T = (N);
+
+Implementation:
+class Solution {
+public:
+    void fillHT(string s, int ht[])
+    {
+        for(int i = 0; i < s.size(); i++)
+            ht[s[i] - 'a'] += 1;
+    }
+    vector<string> wordSubsets(vector<string>& words1, vector<string>& words2)
+    {
+        vector<string> answer;
+        int MAX_CHAR = 26;
+        int hashTable[26] = {0};
+
+        for(int i = 0; i < words2.size(); i++)
+        {
+            int localHT[26] = {0};
+            fillHT(words2[i], localHT);
+
+            for(int j = 0; j < MAX_CHAR; j++)
+                hashTable[j] = max(hashTable[j], localHT[j]);
+        }
+        for(int i = 0; i < words1.size(); i++)
+        {
+            int localHT[26] = {0};
+            int flag = 1;
+
+            fillHT(words1[i], localHT);
+            for(int j = 0; j < MAX_CHAR; j++)
+            {
+                if(localHT[j] < hashTable[j])
+                    flag = 0;
+            }
+            if(flag == true)
+                answer.push_back(words1[i]);
+        }
+
+        return answer;
+    }
+};
+*/

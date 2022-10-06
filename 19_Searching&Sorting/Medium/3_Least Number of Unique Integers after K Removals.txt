@@ -1,0 +1,48 @@
+/*
+Name: The Least Number of Unique Integers after K Removals
+Statement:
+Given an array of integers arr and an integer k. Find the least number of unique integers after removing exactly
+k elements.
+
+Example 1:
+Input: arr = [5,5,4], k = 1
+Output: 1
+Explanation: Remove the single 4, only 5 is left.
+
+Example 2:
+Input: arr = [4,3,1,1,3,3,2], k = 3
+Output: 2
+Explanation: Remove 4, 2 and either one of the two 1s or three 3s. 1 and 3 will be left.
+
+1. Method: Hash Table and Priority Queue
+    1. Create hash table for occurrences of array element.
+    2. Push all elements' count into min heap.
+    3. Now, pop an entry from heap and subtract count from k, if k becomes negative then push the current entry to
+       heap as there count is greater than k.
+*/
+// Solution:
+class Solution {
+public:
+    int findLeastNumOfUniqueInts(vector<int>& arr, int k)
+    {
+        unordered_map<int, int> container;
+        priority_queue<int, vector<int>, greater<int>> heap;
+
+        for(int element : arr)
+            container[element] += 1;
+
+        for(auto item: container)
+            heap.push(item.second);
+
+        while(!heap.empty() && k > 0)
+        {
+            int entry = heap.top();
+            heap.pop();
+            k = k - entry;
+            if(k < 0)
+                heap.push(entry);
+        }
+
+        return !heap.empty() ? heap.size() : 0;
+    }
+};

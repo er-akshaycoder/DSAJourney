@@ -1,0 +1,54 @@
+/*
+Name : next permutation
+Statement: Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of
+numbers.
+*/
+
+class Solution {
+public:
+    void makeReverse(int l, int r, vector<int>& array)
+    {
+        while(l < r)
+        {
+            int temp = array[l];
+            array[l] = array[r];
+            array[r] = temp;
+
+            l++;
+            r--;
+        }
+    }
+
+    void nextPermutation(vector<int>& nums)
+    {
+        int n = nums.size(), leftIndex = - 1, rightIndex;
+
+        for(int i = n - 2; i >= 0; i--)
+        {
+            if(nums[i] < nums[i + 1])
+            {
+                leftIndex = i;
+                break;
+            }
+        }
+
+        if(leftIndex == -1)
+            return makeReverse(0, n - 1, nums);
+
+        int closest = INT_MAX;
+        for(int i = leftIndex + 1; i < n; i++)
+        {
+            if((nums[i] > nums[leftIndex]) && ((nums[i] - nums[leftIndex]) <= closest))
+            {
+                rightIndex = i;
+                closest = nums[i] - nums[leftIndex];
+            }
+        }
+
+        int temp = nums[leftIndex];
+        nums[leftIndex] = nums[rightIndex];
+        nums[rightIndex] = temp;
+
+        makeReverse(leftIndex + 1, n - 1, nums);
+    }
+};

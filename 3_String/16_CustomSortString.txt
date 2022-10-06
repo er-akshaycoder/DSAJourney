@@ -1,0 +1,59 @@
+/*
+Name: Custom Sort String
+Statement:
+You are given two strings order and s. All the words of order are unique and were sorted in some custom order
+previously. Permute the characters of s so that they match the order that order was sorted. More specifically, if a
+character x occurs before a character y in order, then x should occur before y in the permuted string.
+Return any permutation of s that satisfies this property.
+Example 1:
+Input: order = "cba", s = "abcd"
+Output: "cbad"
+
+Method 1: Brute Force
+1. Use two for loops, outer is for order and inner is for s
+2. for each character of order, check if we get any match if yes, just append matched char to answer string and mark
+   matched character with '*' in second string s.
+3. Else go for another next character.
+4. Iterate second string and append all non-star characters.
+
+Method 2: Sorting
+1. Sort second string s
+2. Scan order string and check if we get match in another string using binary search.
+3. Use above logic for further process.
+
+Method 3: Hash Table
+1. Insert second string s into hash table with their occurrences.
+2. Scan order string and check it's each character's occurrences in hash table and insert those many characters in
+   answer string and also make its location 0 in hash table.
+3. Iterate hash table and insert all remaining characters.
+
+Implementation:
+class Solution {
+public:
+    string customSortString(string order, string s)
+    {
+        string answer = "";
+        int hashTable[26] = {0};
+
+        for(int i = 0; i < s.size(); i++)
+            hashTable[s[i] - 'a'] += 1;
+
+        for(int i = 0; i < order.size(); i++)
+        {
+            int charCount = hashTable[order[i] - 'a'];
+            while(charCount--)
+                answer += order[i];
+
+            hashTable[order[i] - 'a'] = 0;
+        }
+        for(int i = 0; i < 26; i++)
+        {
+            int charCount = hashTable[i];
+            while(charCount--)
+                answer += 'a' + i;
+        }
+
+        return answer;
+    }
+};
+*/

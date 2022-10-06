@@ -1,0 +1,53 @@
+/*
+Name: Binary String With Substrings Representing 1 To N
+Statement:
+Given a binary string s and a positive integer n, return true if the binary representation of all the integers in the
+range [1, n] are substrings of s, or false otherwise.
+A substring is a contiguous sequence of characters within a string.
+Example 1:
+Input: s = "0110", n = 3
+Output: true
+Example 2:
+Input: s = "0110", n = 4
+Output: false
+
+Method 1: Brute force
+1. Start loop from 1 till n, and do following:
+2. Convert current number into binary and remove the leading zeros from it.
+3. Check if converted binary number is present in main string, return false if not
+Complexity:
+T = O(N * M * L), Where N = given number, M = len(s), M = len(Current Number)
+
+Method 2: Hash Table
+1. Insert all substrings of main string into hash table.
+2. For each number, check if substring exist or not
+
+Method 3: Pattern Matching
+1. Start loop from 1 till n, and do following:
+2. Convert current number into binary and remove the leading zeros from it.
+3. Check if converted binary number is present in main string using KMP algorithm, return false if not
+4. You just need to check for second half part of Number as first half will be covered in second half of number.
+Complexity:
+    T = O(N * (M + L))
+
+Implementation:
+class Solution {
+public:
+    bool queryString(string s, int n)
+    {
+        if(s == "1")
+            return true;
+
+        for(int i = n / 2; i <= n; i++)
+        {
+            string digit = bitset<32>(i).to_string();
+            digit = digit.substr(digit.find('1'));
+            if(s.find(digit) == string::npos)
+                return false;
+        }
+
+        return true;
+    }
+};
+
+*/

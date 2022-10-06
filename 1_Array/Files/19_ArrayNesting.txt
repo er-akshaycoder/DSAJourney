@@ -1,0 +1,55 @@
+/*
+Name: Array Nesting
+Problem Statement:
+You are given an integer array nums of length n where nums is a permutation of the numbers in the range [0, n - 1].
+
+Logic:
+Use another array as hash table, include a nums[i] in set and mark hashTable[i] as true and include nums[nums[i]]
+in set until  found 1 and maintain count.
+Replace all elements which are included in set with count.
+Continue with scanning an array, if hashTable[i] found non-zero then break for current index as it is already included.
+*/
+class Solution {
+public:
+    int arrayNesting(vector<int>& nums)
+    {
+        int n = nums.size();
+
+        vector<int> v;
+
+        for(int i = 0; i < n; i++)
+            v.push_back(0);
+
+        int setSize = 0;
+        for(int i = 0; i < n; i++)
+        {
+            if(v[i])
+                continue;
+
+            v[i] = -1;
+            int ind = nums[i], cnt = 1;
+            while(!v[ind])
+            {
+                cnt += 1;
+                v[ind] = -1;
+                ind = nums[ind];
+            }
+
+            v[i] = cnt;
+            int j = 1;
+            ind = nums[i];
+            while(j < cnt)
+            {
+                v[ind] = cnt;
+                ind = nums[ind];
+
+                j++;
+            }
+
+            setSize = max(setSize, cnt);
+        }
+
+        return setSize;
+    }
+};
+//leetcode submit region end(Prohibit modification and deletion)

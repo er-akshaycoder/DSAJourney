@@ -1,0 +1,31 @@
+/*
+Title: Kth largest element in BST
+Statement:
+Given a Binary search tree. Your task is to complete the function which will return the Kth largest element without
+doing any modification in Binary Search Tree.
+
+Example: Take any random example
+
+1. Method: Recursion
+    1. As largest element is needed, we have to explore right subtree first.
+    2. Go to right subtree
+    3. Decrease k for rightmost node
+    4. Check if k becomes 0, if yes and print answer
+    5. Go to left Subtree.
+
+*/
+// Solution:
+void findKthNode(Node *root, int &k, int &answer)
+{
+    if(!root)       return;
+
+    findKthNode(root -> right, k, answer);
+
+    k = k - 1;
+
+    if(k == 0)
+        answer = root -> data;
+
+    findKthNode(root -> left, k, answer);
+}
+

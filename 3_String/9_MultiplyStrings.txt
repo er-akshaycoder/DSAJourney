@@ -1,0 +1,70 @@
+/*
+Name: Multiply Strings
+Statement:
+    Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also
+    represented as a string.
+    Example 1:
+        Input: num1 = "2", num2 = "3"
+        Output: "6"
+    Example 2:
+        Input: num1 = "123", num2 = "456"
+        Output: "56088"
+
+Method 1: School Method(Adding two numbers in string format)
+    1. Create output string of size n1 + n2 with all initial value as '0', say answer
+    2. Reverse both string
+    3. Use two for loops, outer for s2 and inner for s1
+    4. Take product of digit1 and digit2, digit1 for s2 and digit2 for s1
+    5. Replace answer[i + j] with answer[i + j] + product
+    6. If carry found, just add it in next operation.
+
+Implementation:
+class Solution {
+public:
+    string multiply(string num1, string num2)
+    {
+        if(num1 == "0" || num2 == "0")
+            return "0";
+        int n1 = num1.size();
+        int n2 = num2.size();
+        string answer;
+
+        reverse(num1.begin(), num1.end());
+        reverse(num2.begin(), num2.end());
+
+        for(int i = 0; i < n1; i++)
+            answer.push_back('0');
+
+        for(int i = 0; i < n2; i++)
+            answer.push_back('0');
+
+        for(int i = 0; i < n2; i++)
+        {
+            int carry = 0;
+            int digit1 = num2[i] - '0';
+            for(int j = 0; j < n1; j++)
+            {
+                int digit2 = num1[j] - '0';
+                int result = digit2 * digit1;
+                int preDigit = answer[i + j] - '0';
+                //cout<<result;
+                result = result + preDigit + carry;
+                carry = result / 10;
+                int rem = result % 10;
+
+                answer[i + j] = rem + '0';
+            }
+            if(carry)
+                 answer[i + n1] = carry + '0';
+            //cout<<answer<<">";
+        }
+
+        reverse(answer.begin(), answer.end());
+        int i = 0;
+        while(i < answer.size() && answer[i] == '0')
+            i++;
+        answer.erase(0, i);
+        return answer;
+    }
+};
+*/

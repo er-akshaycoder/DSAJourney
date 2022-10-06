@@ -1,0 +1,56 @@
+/*
+Name: Find K Pairs with Smallest Sums
+Statement:
+You are given two integer arrays nums1 and nums2 sorted in ascending order and an integer k.
+Define a pair (u, v) which consists of one element from the first array and one element from the second array.
+
+Return the k pairs (u1, v1), (u2, v2), ..., (uk, vk) with the smallest sums.
+
+Example 1:
+Input: nums1 = [1,7,11], nums2 = [2,4,6], k = 3
+Output: [[1,2],[1,4],[1,6]]
+Explanation: The first 3 pairs are returned from the sequence: [1,2],[1,4],[1,6] ,[7,2],[7,4],[11,2],[7,6],[11,4],[11,6]
+
+1. Method: Min Heap
+    1. Form the k pairs from all elements of array1 and first element of array2.
+    2. Remove element from priority queue and add into answer set and push a pair(element of first array from popped
+       entry) with next element of second array.
+    3. Perform step no 3 till kth entry
+    4. Here we are ensuring we will pick lesser pair only.
+
+    Note: Here, Custom sorting is needed, and it should be similar to sort()
+*/
+// Solution:
+class Solution {
+public:
+    struct compare
+    {
+        bool operator()(vector<int> nums1, vector<int> nums2)
+        {
+            if(nums1[2] > nums2[2])
+                return true;
+            return false;
+        }
+    };
+    vector<vector<int>> kSmallestPairs(vector<int>& nums1, vector<int>& nums2, int k)
+    {
+        priority_queue<vector<int>, vector<vector<int>>, compare> container;
+        vector<vector<int>> answer;
+
+        for(int i = 0; i < k && i < nums1.size(); i++)
+            container.push({i, 0, nums1[i] + nums2[0]});
+
+        while(!container.empty() && k--)
+        {
+            vector<int> temp = container.top();
+            cout<<temp[0]<<" "<<temp[1]<<" "<<temp[2]<<endl;
+            container.pop();
+            answer.push_back({nums1[temp[0]], nums2[temp[1]]});
+            if(temp[1] + 1 < nums2.size())
+                container.push({temp[0], temp[1] + 1, nums1[temp[0]] + nums2[temp[1] + 1]});
+        }
+
+       return answer;
+    }
+};
+

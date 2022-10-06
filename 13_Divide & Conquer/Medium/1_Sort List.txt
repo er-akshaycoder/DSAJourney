@@ -1,0 +1,88 @@
+/*
+Name: Sort List - Merge Sort
+Statement:
+Sort given list using merge sort.
+
+Example:
+Input: head = [4,2,1,3]
+Output: [1,2,3,4]
+
+1. Method: Divide & Conquer.
+    1. Split given list into two equal part until you get single node.
+    2. Point head1 to first list and head2 to second list.
+    3. Pass both lists to mergeList function.
+    4. MergeList will be responsible for sorting a list and return new head of merged lists.
+
+*/
+// Solution:
+class Solution {
+public:
+    ListNode* merge(ListNode* firstNode, ListNode* secondNode)
+    {
+        ListNode* merged = new ListNode;
+        ListNode* temp = new ListNode;
+
+        merged = temp;
+        while (firstNode != NULL && secondNode != NULL)
+    	{
+            if (firstNode->val <= secondNode->val)
+    		{
+                temp->next = firstNode;
+                firstNode = firstNode->next;
+            }
+            else
+    		{
+                temp->next = secondNode;
+                secondNode = secondNode->next;
+            }
+            temp = temp->next;
+        }
+
+        while (firstNode != NULL)
+    	{
+            temp->next = firstNode;
+            firstNode = firstNode->next;
+            temp = temp->next;
+        }
+
+        while (secondNode != NULL)
+    	{
+            temp->next = secondNode;
+            secondNode = secondNode->next;
+            temp = temp->next;
+        }
+
+        return merged->next;
+    }
+
+    ListNode* middle(ListNode* head)
+    {
+        ListNode* slow = head;
+        ListNode* fast = head->next;
+
+        while (!slow->next && (!fast && !fast->next)) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        return slow;
+    }
+    ListNode* sortList(ListNode* head)
+    {
+        if(!head)       return head;
+
+        if (head->next == NULL) {
+            return head;
+        }
+
+        ListNode* mid = new ListNode;
+        ListNode* head2 = new ListNode;
+        mid = middle(head);
+        head2 = mid->next;
+        mid->next = NULL;
+
+        ListNode* finalhead = merge(sortList(head), sortList(head2));
+
+        return finalhead;
+    }
+};
+

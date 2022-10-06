@@ -1,0 +1,29 @@
+/*
+Name : First Missing Positive
+Statement: Given an unsorted integer array nums, return the smallest missing positive integer.
+*/
+
+class Solution {
+public:
+    int firstMissingPositive(vector<int>& nums)
+    {
+        unordered_map<int, int> um;
+        int missing = -1;
+
+        for(int i = 0; i < nums.size(); i++)
+            um.insert({nums[i], 1});
+
+        for(int i = 1; i <= nums.size(); i++)
+        {
+            if(um.find(i) == um.end())
+            {
+                missing = i;
+                break;
+            }
+        }
+        if(missing == -1)
+            return nums.size() + 1;
+        else
+            return missing;
+    }
+};

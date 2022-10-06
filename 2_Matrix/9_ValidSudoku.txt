@@ -1,0 +1,76 @@
+/*
+Name: Valid Sudoku
+Statement:
+Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the
+following rules:
+ Each row must contain the digits 1-9 without repetition.
+ Each column must contain the digits 1-9 without repetition.
+ Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+
+Example 1:
+Input: board =
+[["5","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]]
+Output: true
+
+Method 1: Perform 3 checks
+1. Perform 3 checks and checking for duplicates for each region.
+
+Method 2: Perform 3 checks and Hash Table
+1. Perform 3 checks and use hash table to check for duplicity.
+
+Method 3: Combine 3 checks
+1. Create 3 hash table for each check.
+2. for row check, use board[i][j].
+3. for column check, use board[j][i].
+4. for grid check, assign i index for each grid horizontally.
+*/
+
+class Solution {
+public:
+    bool isValidSudoku(vector<vector<char>>& board)
+    {
+        unordered_map<char, int> rowHT;
+        unordered_map<char, int> colHT;
+        unordered_map<char, int> gridHT;
+
+        for(int i = 0; i < 9; i++)
+        {
+            for(int j = 0; j < 9; j++)
+            {
+                if(rowHT.find(board[i][j]) != rowHT.end() && board[i][j] != '.')
+                {
+                    if(rowHT[board[i][j]] == i)
+                        return false;
+                }
+                if(colHT.find(board[j][i]) != colHT.end() && board[j][i] != '.')
+                {
+                    if(colHT[board[j][i]] == i)
+                       return false;
+                }
+                if(gridHT.find(board[(i / 3) * 3 + j / 3][(i % 3) * 3 + j % 3]) != gridHT.end() && board[(i / 3) * 3 + j / 3][(i % 3) * 3 + j % 3] != '.')
+                {
+                    if(gridHT[board[(i / 3) * 3 + j / 3][(i % 3) * 3 + j % 3]] == i)
+                    {
+                        cout<<gridHT[board[(i / 3) * 3 + j / 3][(i % 3) * 3 + j % 3]]<<board[(i / 3) * 3 + j / 3][(i % 3) * 3 + j % 3]<<(i / 3) * 3 + j / 3<<(i % 3) * 3 + j % 3;
+                        return false;
+                    }
+                }
+                rowHT[board[i][j]] = i;
+                colHT[board[j][i]] = i;
+                gridHT[board[(i / 3) * 3 + j / 3][(i % 3) * 3 + j % 3]] = i;
+            }
+        }
+        return true;
+    }
+};
+//leetcode submit region end(Prohibit modification and deletion)
+
+

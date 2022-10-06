@@ -1,0 +1,55 @@
+/*
+Name: Shifting Letters
+Statement:
+You are given a string s of lowercase English letters and an integer array shifts of the same length.
+Note: Read explanation to understand question.
+Return the final string after all such shifts to s are applied.
+Example 1:
+Input: s = "abc", shifts = [3,5,9]
+Output: "rpl"
+Explanation: We start with "abc".
+After shifting the first 1 letters of s by 3, we have "dbc".
+After shifting the first 2 letters of s by 5, we have "igc".
+After shifting the first 3 letters of s by 9, we have "rpl", the answer.
+
+Method 1: Brute Force
+1. Scan give shifts array and do following task for characters scanned so far:
+    i. Take character one by one till ith index and go till shifts[i] and replace resultant character in source string.
+
+Method 2: Straight Forward
+1. In above method, we were going till shifts[i], but can reduce this traversal by adding shifts[i] to current character
+   ascii value.
+2. Here we need take mod 26 of resultant sum, to make traversing operation circular.
+
+Complexity:
+    T = (N2)
+
+Method 3: Efficient
+1. If you closely noticed, we are shifting first character to sum of shifts array and second character to sum of shifts array
+   - shifts[i] and so on.
+2. So we can use this observation to shifts all characters.
+
+Implementation:
+class Solution {
+public:
+    string shiftingLetters(string s, vector<int>& shifts)
+    {
+        int n = shifts.size();
+        long sum = 0;
+
+        for(int i = 0; i < n; i++)
+            sum += shifts[i];
+
+        for(int i = 0; i < n; i++)
+        {
+            int shift = (sum + (s[i] - 'a')) % 26;
+            s[i] = (shift + 'a');
+            sum = sum - shifts[i];
+        }
+
+        return s;
+    }
+};
+
+
+*/

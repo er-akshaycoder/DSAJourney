@@ -1,0 +1,56 @@
+/*
+Name: Find And Replace in String
+Statement:
+You are given a 0-indexed string s that you must perform k replacement operations on. The replacement operations are
+given as three 0-indexed parallel arrays, indices, sources, and targets, all of length k.
+To complete the iᵗʰ replacement operation:
+Check if the substring sources[i] occurs at index indices[i] in the original string s.
+ If it does not occur, do nothing.
+ Otherwise if it does occur, replace that substring with targets[i].
+
+For example, if s = "abcd", indices[i] = 0, sources[i] = "ab", and targets[i] = "eee", then the result of this
+replacement will be "eeecd".
+Return the resulting string after performing all replacement operations on s.
+Example 1:
+Input: s = "abcd", indices = [0, 2], sources = ["a", "cd"], targets = ["eee",
+"ffff"]
+Output: "eeebffff"
+Explanation:
+"a" occurs at index 0 in s, so we replace it with "eee".
+"cd" occurs at index 2 in s, so we replace it with "ffff".
+
+Method 1: Hash Table
+1. Just check which substrings sources[i] are replaceable in main string using hashtable.
+2. If sources[i] and substring of s are matching, insert entry indexes[i] and i in hashtable.
+3. Scan the string and check if current index is present in a hashtable, if yes just append target[i] to answer else
+   append s[i].
+
+Implementation:
+class Solution {
+public:
+    string findReplaceString(string s, vector<int>& indices, vector<string>& sources, vector<string>& targets)
+    {
+        string answer = "";
+        unordered_map<int, int> hashTable;
+
+        for(int i = 0; i < indices.size(); i++)
+        {
+            string temp = s.substr(indices[i], sources[i].size());
+            if(temp == sources[i])
+                hashTable[indices[i]] = i;
+        }
+        for(int i = 0; i < s.size(); i++)
+        {
+            if(hashTable.find(i) != hashTable.end())
+            {
+                answer += targets[hashTable[i]];
+                i += sources[hashTable[i]].size() - 1;
+            }
+            else
+                answer += s[i];
+        }
+        return answer;
+    }
+};
+
+*/

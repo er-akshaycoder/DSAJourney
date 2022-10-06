@@ -1,0 +1,52 @@
+/*
+Name: Find All Duplicate Subtrees
+Statement:
+Given a binary tree, find all duplicate subtrees. For each duplicate subtree, we only need to return the root node of
+any one of them. Two trees are duplicates if they have the same structure with the same node values.
+
+Example:
+       1
+      / \
+     2   3
+    /   / \
+   4   2   4
+      /
+     4
+
+Output :
+   2
+  /    and    4
+ 4
+
+1. Method: Hash Table
+    1. Create a separate string for each subtree with opening and closing bracket.
+    2. Check if sub-string is already present.
+
+*/
+// Solution:
+string findDuplicatesSubtree(Node* root, vector<Node*> &answer, unordered_map<string, int> &container)
+{
+    if(!root)  return "";
+
+    string subtree = "(";
+    subtree += findDuplicatesSubtree(root -> left, answer, container);
+    subtree += to_string(root -> data);
+    subtree += findDuplicatesSubtree(root -> right, answer, container);
+    subtree += ")";
+
+    if(container[subtree] == 1)
+        answer.push_back(root);
+
+    container[subtree] += 1;
+
+    return subtree;
+}
+vector<Node*> printAllDups(Node* root)
+{
+    vector<Node*> answer;
+    unordered_map<string, int> container;
+
+    findDuplicatesSubtree(root, answer, container);
+
+    return answer;
+}

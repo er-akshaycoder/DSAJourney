@@ -1,0 +1,55 @@
+/*
+Name: Check If a String Can Break Another String
+Statement:
+Given two strings: s1 and s2 with the same size, check if some permutation of string s1 can break some permutation of
+string s2 or vice-versa. In other words s2 can break s1 or vice-versa.
+A string x can break string y (both of size n) if x[i] >= y[i] (in alphabetical order) for all i between 0 and n-1.
+
+Example 1:
+Input: s1 = "abc", s2 = "xya"
+Output: true
+Explanation: "ayx" is a permutation of s2="xya" which can break to string "abc" which is a permutation of s1="abc".
+
+1. Method: Sorting
+    1. Sort the both string and check mapping of every character from first to second.
+
+2. Method: Hash Table
+    1. Consider one case at a time, lets consider s1[i] >= s2[i].
+    2. Create a hash table to store frequency of each character for second string.
+    3. Scan the first string and map the current character to the closest character by hash table.
+*/
+// Solution:
+class Solution {
+public:
+    bool checkIfCanBreakUtil(string s1, string s2)
+    {
+        int container[26] = {0};
+
+        for(char ch : s1)
+            container[ch - 'a'] += 1;
+
+        for(int i = 0 ; i < s2.size(); i++)
+        {
+            int charIndex = s2[i] - 'a', flag = 0;
+
+            for(int j = charIndex; j >= 0; j--)
+            {
+                if(container[j] != 0)
+                {
+                    //cout<<char(charIndex + 'a') <<" "<<char(j + 'a')<<endl;
+                    container[j] -= 1;
+                    flag = 1;
+                    break;
+                }
+            }
+            if(flag == 0)
+                return false;
+        }
+
+        return true;
+    }
+    bool checkIfCanBreak(string s1, string s2)
+    {
+        return checkIfCanBreakUtil(s1, s2) || checkIfCanBreakUtil(s2, s1);
+    }
+};

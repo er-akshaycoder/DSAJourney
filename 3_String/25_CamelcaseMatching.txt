@@ -1,0 +1,56 @@
+/*
+Name: Camelcase Matching
+Statement:
+Given an array of strings queries and a string pattern, return a boolean array answer where answer[i] is true if
+queries[i] matches pattern, and false otherwise. A query word queries[i] matches pattern if you can insert lowercase
+English letters pattern so that it equals the query. You may insert each character at any position and you may not
+insert any characters.
+Example 1:
+Input: queries = ["FooBar","FooBarTest","FootBall","FrameBuffer",
+"ForceFeedBack"], pattern = "FB"
+Output: [true,false,true,true,false]
+Note: for query FooBarTest output is false as we have to insert T and which is capital.
+
+Method 1: Straight Forward
+1. Scan queries one by one and do following steps:
+    i. if character of query is matched with pattern, increment index of pattern
+   ii. Else check if character of query is capital or not, append false if it is in upper case
+  iii. Check if pattern is scanned fully
+Complexity:
+    T = (N * M)
+
+Implementation:
+class Solution {
+public:
+    vector<bool> camelMatch(vector<string>& queries, string pattern)
+    {
+        int n = queries.size();
+        int m = pattern.size();
+        vector<bool> answer;
+
+        for(int i = 0; i < n; i++)
+        {
+            int k = 0;
+            bool flag = true;
+            for(int j = 0; j < queries[i].size(); j++)
+            {
+                if(k < m && queries[i][j] == pattern[k])
+                    k++;
+                else
+                {
+                    if(isupper(queries[i][j]))
+                    {
+                        flag = false;
+                        break;
+                    }
+                }
+            }
+            if(k != m && flag)
+                flag = false;
+            answer.push_back(flag);
+        }
+
+        return answer;
+    }
+};
+*/

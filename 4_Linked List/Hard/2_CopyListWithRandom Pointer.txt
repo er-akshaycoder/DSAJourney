@@ -1,0 +1,93 @@
+/*
+Name: Copy List with Random Pointer
+Statement:
+Understand problem statement from RBR video.
+We have to create new linked list exactly similar to given one, but next pointer and random pointer should be as per
+newly created list.
+Example:
+If random pointer of first node is pointing to third node, first pointer of newly created list should be point to third
+node of newly created list.
+
+Input: head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
+Output: [[7,null],[13,0],[11,4],[10,2],[1,0]]
+
+Method 1: Brute Force
+1. Create new linked list and for each node check where is the random pointer pointing in original list.
+2. If Current node's random pointer is pointing to next third, go to next third node of newly created list and update
+   the random pointer of current node in newly created list.
+Complexity:
+    T = O(N2)
+
+Method 2: Hash Table
+1. Create new linked list from given list and also create hash table with existing node as key and new node as value.
+2. Start Scanning original list and newly created list parallely, check if random pointer of current node in original
+   list is not null.
+3. If it is not null, then update random pointer field of current node of new list with hashTable[temp->random] where
+   temp is pointing to current node of original list.
+Complexity:
+    T = O(N)
+
+Method 3: Observation
+1. While Creating new list, point next pointer of existing node to newly created node and point random pointer of newly
+   created node to existing node, so that we can reach out to corresponding node of newly created node.
+2. Start scanning newly created list, we can update random pointer of current node by going to corresponding(existing)
+   node and then taking next of random node which is pointed by corresponding existing node.
+Complexity:
+    T = O(N)
+
+Method 3: Efficient-Growing existing List
+1. Start scanning existing list, create a new node for every existing node and insert it in between current node and
+   next node.
+2. Inserting corresponding new node after to existing node will give you the updated random node if any node's random
+   pointer from remaining nodes is pointing to the current existing node by just taking the next of random node.
+Complexity:
+    T = O(N)
+Note: As we are modifying existing list, we have to make original list as it was earlier while returning header.
+
+*/
+//Implementation:
+class Solution {
+public:
+    Node* copyRandomList(Node* head)
+    {
+        if(head == NULL)
+            return head;
+        Node *temp, *newNode, *first, *temp1, *temp2, *prev;
+        temp = head;
+        first = NULL;
+
+        while(temp)
+        {
+            newNode = new Node(temp -> val);
+            newNode -> next = temp -> next;
+            temp -> next = newNode;
+            temp = newNode;
+            temp = temp -> next;
+        }
+
+        temp = head;
+        while(temp)
+        {
+            temp1 = temp -> next;
+            if(temp1 && temp -> random)
+                temp1 -> random = temp -> random -> next;
+
+            temp = temp -> next -> next;
+        }
+        temp = head;
+        first = temp -> next;
+        while(temp && temp -> next)
+        {
+            prev = temp;
+            temp1 = temp -> next;
+            temp -> next = temp1 -> next;
+            temp1 -> next = temp -> next ? temp -> next -> next : temp -> next;
+            temp = temp -> next;
+        }
+        prev -> next = NULL;
+
+        return first;
+    }
+};
+//leetcode submit region end(Prohibit modification and deletion)
+

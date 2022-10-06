@@ -1,0 +1,42 @@
+/*
+Name: Boats to Save People
+Statement:
+You are given an array people where people[i] is the weight of the iᵗʰ person, and an infinite number of boats where
+each boat can carry a maximum weight of limit. Each boat carries at most two people at the same time, provided the sum
+of the weight of those people is at most limit.
+Return the minimum number of boats to carry every given person.
+
+Example:
+Input: people = [4, 5, 1, 2, 7, 4], limit = 7
+Output: 4
+Explanation: (7), (1, 5), (4, 2), (4)
+
+Note: Question looks easy, but its tricky one.
+
+1. Method: Greedy
+    1. Sort the array in ascending order.
+    2. Don't consider 2 elements from right side as there can be combination of first and last element.
+    3. So, take two pointers, say left and right
+    4. Check if both left and right element can possible, if yes increment i
+    5. Take elements from right in order to minimize the count.
+*/
+// Solution:
+class Solution {
+public:
+    int numRescueBoats(vector<int>& people, int limit)
+    {
+        int answer = 0, i = 0, j = people.size() - 1;
+
+        sort(people.begin(), people.end());
+        while(i <= j)
+        {
+            if(limit >= (people[i] + people[j]))
+                i += 1;
+
+            answer += 1;
+            j -= 1;
+        }
+
+        return answer;
+    }
+};

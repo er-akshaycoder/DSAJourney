@@ -1,0 +1,44 @@
+/*
+Name: Moving Stones Until Consecutive
+Problem Statement:
+Read problem statement from LeetCode.
+
+Method:
+    Try with below test cases:
+        1. [1, 2, 3]
+        2. [1, 2, 5]
+        3. [1, 3, 4]
+        4. [1, 5, 9]
+        5. [1, 3, 9]
+        6. [1, 5, 7]
+
+    Put firs minimum into a, second into b and third into c.
+    Handle above case separately.
+*/
+
+class Solution {
+public:
+    vector<int> numMovesStones(int a, int b, int c)
+    {
+        vector<int> v = {a, b, c};
+        sort(v.begin(), v.end());
+
+        a = v[0];
+        b = v[1];
+        c = v[2];
+
+        if(a + 1 == b && b + 1 == c)
+            return {0,0};
+
+        if(a + 1 == b)
+            return {1, c - b - 1};
+
+        if(b + 1 == c)
+            return {1, b - a - 1};
+
+        if(a + 2 == b || b + 2 == c)
+            return {1, b - a - 1 +  c - b - 1};
+        else
+            return {2, b - a - 1 +  c - b - 1};
+    }
+};

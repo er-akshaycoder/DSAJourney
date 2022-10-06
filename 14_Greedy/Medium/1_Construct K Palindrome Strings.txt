@@ -1,0 +1,41 @@
+/*
+Name: Construct K Palindrome Strings
+Statement:
+Given a string s and an integer k, return true if you can use all the characters in s to construct k palindrome strings
+or false otherwise.
+
+Example 1:
+Input: s = "annabelle", k = 2
+Output: true
+Explanation: You can construct two palindromes using all characters in s.
+Some possible constructions "anna" + "elble", "anbna" + "elle", "anellena" + "b"
+
+1. Method: Palindromic Pattern
+    1. A string said to be palindrome if and only if it's all characters appears at-least two times(even times) except
+       one in case of odd.
+    2. Similarly, all characters need to be appeared even number of times except k odd occurrences of characters.
+
+*/
+// Solution:
+class Solution {
+public:
+    bool canConstruct(string s, int k)
+    {
+        if(k > s.size())
+            return false;
+
+        int container[26] = {0};
+
+        for(char ch : s)
+            container[ch - 'a'] += 1;
+
+        int odd = 0;
+        for(int i = 0; i < 26; i++)
+        {
+            if(container[i] % 2)
+                odd += 1;
+        }
+
+        return odd <= k ? true : false;
+    }
+};

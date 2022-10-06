@@ -1,0 +1,61 @@
+/*
+Name: Short Encoding of Words
+Statement:
+Note: To understand problem statement, read https://www.youtube.com/watch?v=6f0pLQYG834&t=174s
+
+Example 1:
+Input: words = ["time", "me", "bell"]
+Output: 10
+Explanation: A valid encoding would be s = "time#bell#"
+Example 2:
+Input: words = ["t"]
+Output: 2
+Explanation: A valid encoding would be s = "t#"
+
+Method 1: Brute force
+1. Take a word one by one from given array.
+2. Find all suffix of that string and check each with all remaining words.
+3. If match found, just mark words[i] by delimiter.
+4. Return length of all non-star words.
+
+Method 2: Hash Table
+1. We can make above method efficient by using hash table to check if word's suffixes with all remaining words.
+*/
+
+Implementation:
+class Solution {
+public:
+    int minimumLengthEncoding(vector<string>& words)
+    {
+        int answer = 0;
+        unordered_map<string, int> hashTable;
+
+        for(int i = 0; i < words.size(); i++)
+            hashTable.insert({words[i], i});
+
+        for(auto itr : hashTable)
+        {
+            string word = itr.first;
+            for(int i = 1 ; i < word.size(); i++)
+            {
+                string str = word.substr(i);
+
+                if(hashTable.find(str) != hashTable.end())
+                {
+                    hashTable[str] = -1;
+                    cout<<str<<">";
+                }
+            }
+        }
+        int cnt = 0;
+        for(auto itr : hashTable)
+        {
+            if(itr.second != -1)
+            {
+                answer += itr.first.size();
+                cnt += 1;
+            }
+        }
+        return answer + cnt;
+    }
+};

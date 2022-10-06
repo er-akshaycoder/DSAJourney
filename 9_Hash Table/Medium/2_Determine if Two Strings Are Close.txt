@@ -1,0 +1,65 @@
+/*
+Name: Determine if Two Strings Are Close
+Statement:
+Two strings are considered close if you can attain one from the other using the following operations:
+    Operation 1: Swap any two existing characters.     For example, abcde -> aecdb
+    Operation 2: Transform every occurrence of one existing character into another existing character, and do the same
+    with the other character. For example, aacabb -> bbcbaa (all a's turn into b's, and all b's turn into a's)
+
+You can use the operations on either string as many times as necessary.
+Given two strings, word1 and word2, return true if word1 and word2 are close, and false otherwise.
+
+Example:
+Input: word1 = "cabbba", word2 = "abbccc"
+Output: true
+Explanation: You can attain word2 from word1 in 3 operations.
+Apply Operation 1: "cabbba" -> "caabbb"
+Apply Operation 2: "caabbb" -> "baaccc"
+Apply Operation 2: "baaccc" -> "abbccc"
+
+1. Method: Hash Table
+    1. If u carefully noticed, here we have to not worry about swapping and transformation.
+    2. If both strings are of equal size, all characters are available in each other and has equal count of characters
+       then we can swap/transform a string for sure to make them equal.
+    3. So, here we need to perform below checks:
+        1. If two strings are equal in size
+        2. All Characters of S1 present in S2   --> Hash Table
+        3. Count of Characters of s1 is equal to s2's Count(Not necessary of individual characters) --> Array of size
+           n + 1
+*/
+// Solution:
+class Solution {
+public:
+    bool closeStrings(string word1, string word2)
+    {
+        if(word1.size() != word2.size())    return false;
+
+        int frequency1[26] = {0};
+        int frequency2[26] = {0};
+        vector<int> container(word1.size() + 1, 0);
+
+        for(int i = 0; i < word1.size(); i++)
+        {
+            frequency1[word1[i] - 'a'] += 1;
+            frequency2[word2[i] - 'a'] += 1;
+        }
+        for(int i = 0; i < 26; i++)
+        {
+            if(frequency1[i] != frequency2[i] && (frequency1[i] == 0 || frequency2[i] == 0))
+                return false;
+        }
+        for(int i = 0; i < 26; i++)
+        {
+            container[frequency1[i]] += 1;
+            container[frequency2[i]] -= 1;
+        }
+
+        for(int i = 0; i < word1.size(); i++)
+        {
+            if(container[i] != 0)
+                return false;
+        }
+        return true;
+    }
+};
+

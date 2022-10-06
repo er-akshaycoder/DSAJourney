@@ -1,0 +1,84 @@
+/*
+Name: Maximum Swap
+Problem Statement:
+You are given an integer num. You can swap two digits at most once to get the maximum valued number.
+Return the maximum valued number you can get.
+Example 1:
+Input: num = 2736
+Output: 7236
+Explanation: Swap the number 2 and the number 7.
+
+Method 1: Using Array
+1. Convert given number into array and store in vector(number will be stored in reverse order).
+2. Use another temporary array which will store the index of maximum element till ith from left.
+3. Scan the array from right to left and swap the two number of nums[i] < nums[temp[i]].
+4. Convert the array into number and return the number;
+
+Method 2: String
+1. Convert number into string say nums
+2. Scan the string in reverse order, maintain three pointers, say globalMax, rightMax and leftMin.
+3. While Scanning:
+    1. The string maintain the index of max element so far and store it in globalMax.
+    2. If nums[globalMax] > nums[leftMin] if left < globalIndex, then maintain globalMax in rightMax.
+5. Swap the nums[leftMin] and nums[rightMax].
+6. Convert String into number and return it.
+*/
+
+// Method - 1:
+class Solution {
+public:
+    int maximumSwap(int num)
+    {
+        vector<int> nums;
+
+        while(num)
+        {
+            nums.push_back(num % 10);
+            num = num / 10;
+        }
+        int n = nums.size();
+        vector<int> temp;
+
+        int maxIndex = 0, flag = 1;
+        for(int i = 0; i < n; i++)
+        {
+            if(nums[maxIndex] < nums[i])
+                maxIndex = i;
+
+            temp.push_back(maxIndex);
+        }
+        int number = 0;
+        for(int i = n - 1; i >= 0; i--)
+        {
+            if(flag && nums[i] < nums[temp[i]])
+            {
+                maxIndex = nums[i];
+                nums[i] = nums[temp[i]];
+                nums[temp[i]] = maxIndex;
+                flag = 0;
+            }
+            number = (number * 10) + nums[i];
+        }
+
+        return number;
+    }
+};
+// method - 2:
+class Solution {
+public:
+    int maximumSwap(int num) {
+        string digits = to_string(num);
+        int left = 0, right = 0;
+        int max_idx = digits.length() - 1;
+        for (int i = digits.length() - 1; i >= 0; --i) {
+            if (digits[i] > digits[max_idx]) {
+                max_idx = i;
+            } else if (digits[max_idx] > digits[i]) {
+                left = i;
+                right = max_idx;
+            }
+        }
+        swap(digits[left], digits[right]);
+        return stoi(digits);
+    }
+};

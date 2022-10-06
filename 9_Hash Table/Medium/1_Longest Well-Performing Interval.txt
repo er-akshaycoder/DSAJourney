@@ -1,0 +1,51 @@
+/*
+Name: Longest Well-Performing Interval
+Statement:
+We are given hours, a list of the number of hours worked per day for a given employee.
+A day is considered to be a tiring day if and only if the number of hours worked is (strictly) greater than 8.
+A well-performing interval is an interval of days for which the number of tiring days is strictly larger than the
+number of non-tiring days.
+
+Return the length of the longest well-performing interval.
+
+Example 1:
+Input: hours = [9,9,6,0,6,6,9]
+Output: 3
+Explanation: The longest well-performing interval is [9,9,6].
+
+1. Method: Hash Table
+    1. As per solved similar example in array P-I, we can use Hash Table to store prefix sum till ith elements.
+    2. Here, instead of elements' sum, we will consider 1 and -1 for prefix sum. i.e. 1 for element GT 8 and -1 for LT 9
+    3. If currSum is GT 0, that means one GT-8 is available and, we can consider this for answer.
+    4. Else, will check if currSum - 1 is occurring second times(Reason is If currSum - 1 found, that means GT-8 and
+       LE-8 elements are equal from the next to last occurred index and current is GT-8 element as currSum is increased
+       by 1) then we will consider window(from last to current) for answer.
+    5. We will pick maximum of considered windows.
+*/
+// Solution:
+class Solution {
+public:
+    int longestWPI(vector<int>& hours)
+    {
+        int n = hours.size();
+        int answer = 0, currSum = 0;
+        unordered_map<int, int> container;
+
+        for(int i = 0; i < n; i++)
+        {
+            currSum += hours[i] > 8 ? 1 : -1;
+
+            if(currSum > 0)
+                answer = max(answer, i + 1);
+            else
+            {
+                if(container.find(currSum - 1) != container.end())
+                    answer = max(answer, i - container[currSum - 1]);
+            }
+            if(container.find(currSum) == container.end())
+                container[currSum] = i;
+        }
+
+        return answer;
+    }
+};

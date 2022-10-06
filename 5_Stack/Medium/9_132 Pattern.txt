@@ -1,0 +1,49 @@
+/*
+Name: 132 Pattern
+Statement:
+Given an array of n integers nums, a 132 pattern is a subsequence of three integers nums[i], nums[j] and nums[k] such
+that i < j < k and nums[i] < nums[k] < nums[j].
+Return true if there is a 132 pattern in nums, otherwise, return false.
+
+Example 1:
+Input: nums = [1,2,3,4]
+Output: false
+Explanation: There is no 132 pattern in the sequence.
+
+Example 2:
+Input: nums = [3,1,4,2]
+Output: true
+
+1. Method: Stack
+    1. Consider an array, nums = [a1, a2, a3, a4, a5, a6, a6, a7].
+    2. If an element a4 is maximum, then we have to find second maximum from its right side, say secondMax
+    3. Now, if we get lesser element than secondMax at left side, then we get the 132 pattern
+
+    1. Start scanning an array from right to left and push an element if top is greater than current element.
+    2. Else, (here we got 1st maximum element) pop an all elements from stack and find 2nd maximum element parallel.
+    3. Once we get 2nd max, just check if current element is less than 2nd max and if yes, return true;
+
+*/
+// Solution:
+class Solution {
+public:
+    bool find132pattern(vector<int>& nums)
+    {
+        stack<int> stackHolder;
+        int secondMax = INT_MIN;
+
+        for(int i = nums.size() - 1; i >= 0; i--)
+        {
+            if(secondMax > nums[i])
+                return true;
+            while(!stackHolder.empty() && nums[i] > stackHolder.top())
+            {
+                secondMax = max(secondMax, stackHolder.top());
+                stackHolder.pop();
+            }
+            stackHolder.push(nums[i]);
+        }
+        return false;
+    }
+};
+

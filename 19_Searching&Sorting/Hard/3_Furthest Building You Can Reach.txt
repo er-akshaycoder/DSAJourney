@@ -1,0 +1,67 @@
+/*
+Name: Furthest Building You Can Reach
+Statement:
+You are given an integer array heights representing the heights of buildings, some bricks, and some ladders.
+You start your journey from building 0 and move to the next building by possibly using bricks or ladders.
+While moving from building i to building i+1 (0-indexed),
+    If the current building's height is greater than or equal to the next building's height, you do not need a ladder
+    or bricks.
+    If the current building's height is less than the next building's height, you can either use one ladder or
+    (h[i+1] - h[i]) bricks.
+
+Return the furthest building index (0-indexed) you can reach if you use the given ladders and bricks optimally.
+
+Example 1:
+Input: heights = [4,2,7,6,9,14,12], bricks = 5, ladders = 1
+Output: 4
+Explanation: Starting at building 0, you can follow these steps:
+- Go to building 1 without using ladders nor bricks since 4 >= 2.
+- Go to building 2 using 5 bricks. You must use either bricks or ladders because 2 < 7.
+- Go to building 3 without using ladders nor bricks since 7 >= 6.
+- Go to building 4 using your only ladder. You must use either bricks or ladders because 6 < 9.
+It is impossible to go beyond building 4 because you do not have any more bricks or ladders.
+
+Example 2:
+Input: heights = [4,12,2,7,3,18,20,3,19], bricks = 10, ladders = 2
+Output: 7
+
+1. Method: Min Heap
+    1. Here, decision is which one to use from bricks or ladders for fulfilling current difference.
+    2. Use Ladders when difference is huge else use bricks
+    3. If heights[i] LT heights[i + 1] and difference at current comparison is smaller than previous comparisons, use
+       bricks
+    4. We can get differences of previous comparisons with min heap(of size ladders).
+    5. If min heap is fulled, then we will check if current difference is smaller that its top. If yes we will pop an
+       entry from heap and subtract it from bricks and will push current difference into min heap.
+*/
+// Solution:
+class Solution {
+public:
+    int furthestBuilding(vector<int>& heights, int bricks, int ladders)
+    {
+        priority_queue<int, vector<int>, greater<int>> container;
+
+        for(int i = 0; i < heights.size() - 1; i++)
+        {
+            if(heights[i] < heights[i + 1])
+            {
+                if(container.size() < ladders)
+                    container.push(heights[i + 1] - heights[i]);
+                else
+                {
+                    if(!container.empty() && container.top() < (heights[i + 1] - heights[i]))
+                    {
+                        bricks -= container.top();
+                        container.pop();
+                        container.push(heights[i + 1] - heights[i]);
+                    }
+                    else
+                        bricks -= (heights[i + 1] - heights[i]);
+                    if(bricks < 0)
+                        return i;
+                }
+            }
+        }
+        return heights.size() - 1;
+    }
+};

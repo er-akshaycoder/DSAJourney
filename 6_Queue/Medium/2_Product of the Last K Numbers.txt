@@ -1,0 +1,67 @@
+/*
+Name: Product of the Last K Numbers
+Statement:
+Design an algorithm that accepts a stream of integers and retrieves the product of the last k integers of the stream.
+Implement the ProductOfNumbers class:
+    ProductOfNumbers() Initializes the object with an empty stream.
+    void add(int num) Appends the integer num to the stream.
+    int getProduct(int k) Returns the product of the last k numbers in the current list. You can assume that always
+    the current list has at least k numbers.
+
+The test cases are generated so that, at any time, the product of any contiguous sequence of numbers will fit into a
+single 32-bit integer without overflowing.
+
+Example:
+Input
+["ProductOfNumbers","add","add","add","add","add","getProduct","getProduct",
+"getProduct","add","getProduct"]
+[[],[3],[0],[2],[5],[4],[2],[3],[4],[8],[2]]
+
+Output
+[null,null,null,null,null,null,20,40,0,null,32]
+
+1. Method: Naive
+    1. Use vector as stream and store product of previous elements at ith position
+    2. But, when 0 encounters, need to take special care.
+    3. If 0 is available in last k elements, then need to return just 0 else division of number at last index and
+       number at size() - k - 1;
+    4. But, we don't know if 0 is there in last k elements. So when 0 comes, will just clear the stream as result of 0
+       will be always 0.
+*/
+// Solution:
+
+class ProductOfNumbers {
+    vector<int> stream;
+public:
+    ProductOfNumbers()
+    {
+
+    }
+
+    void add(int num)
+    {
+        if(stream.size() == 0 && num != 0)
+            stream.push_back(num);
+        else
+        {
+            if(num != 0)
+                stream.push_back(stream.back() * num);
+            else
+                stream.clear();
+        }
+    }
+
+    int getProduct(int k)
+    {
+        int start = stream.size() - k;
+
+        if(start < 0)
+            return 0;
+
+        if(start == 0)
+            return stream.back();
+
+        return stream.back() / stream[start - 1];
+    }
+};
+

@@ -1,0 +1,47 @@
+/*
+Title: Maximum Difference Between Node and Ancestor
+Statement:
+Given the root of a binary tree, find the maximum value v for which there exist different nodes a and b where
+v = |a.val - b.val| and a is an ancestor of b.
+A node a is an ancestor of b if either: any child of a is equal to b or any child of a is an ancestor of b.
+
+Example 1:
+Input: root = [8,3,10,1,6,null,14,null,null,4,7,13]
+Output: 7
+
+1. Method: Recursion
+    1. As absolute difference is calculation criteria here, we have to find both maximum and minimum child from
+       left and right subtree.
+    2. So, While coming top to bottom, we will maintain minimum node and while bottom to top we will maintain minimum
+       node.
+    3. For Max difference, we will maintain global max variable
+
+*/
+// Solution
+class Solution {
+public:
+    int findMaxDiff(TreeNode* root, int *answer, int minRoot)
+    {
+        if(!root)       return INT_MAX;
+
+        *answer = max(*answer, abs(root -> val - minRoot));
+        if(root -> left == NULL && root -> right == NULL)
+            return root -> val;
+
+        int leftTree = findMaxDiff(root -> left, answer, min(minRoot, root -> val));
+        int rightTree = findMaxDiff(root -> right, answer, min(minRoot, root -> val));
+
+        int minChild = min(leftTree, rightTree);
+        *answer = max(*answer, abs(root -> val - minChild));
+
+        return min(root -> val, minChild);
+    }
+    int maxAncestorDiff(TreeNode* root)
+    {
+        int answer = INT_MIN;
+
+        findMaxDiff(root, &answer, root -> val);
+
+        return answer;
+    }
+};

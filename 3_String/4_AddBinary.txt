@@ -1,0 +1,56 @@
+/*
+Name: Add Binary
+Statement:
+Given two binary strings a and b, return their sum as a binary string.
+Example 1:
+Input: a = "11", b = "1"
+Output: "100"
+
+Method : Standard Method
+
+Implementation:
+class Solution {
+public:
+    string addBinary(string a, string b)
+    {
+        string answer = "";
+        int i = a.size() - 1, j = b.size() - 1;
+        int carry = 0;
+
+        while(i >= 0 && j >= 0)
+        {
+            int bit1 = a[i] - 48;
+            int bit2 = b[j] - 48;
+            int result = bit1 + bit2 + carry;
+
+            carry = result / 2;
+            answer += (char) ((result % 2) + 48);
+            i--;
+            j--;
+        }
+        while(i >= 0)
+        {
+            int bit1 = a[i] - 48;
+            int result = bit1 + carry;
+
+            carry = result / 2;
+            answer += (char) ((result % 2) + 48);
+            i--;
+        }
+        while(j >= 0)
+        {
+            int bit1 = b[j] - 48;
+            int result = bit1 + carry;
+
+            carry = result / 2;
+            answer += (char) ((result % 2) + 48);
+            j--;
+        }
+        if(carry)
+            answer += "1";
+
+        reverse(answer.begin(), answer.end());
+        return answer;
+    }
+};
+*/

@@ -1,0 +1,53 @@
+/*
+Name: Kth Smallest Element in a Sorted Matrix
+Statement:
+Given an n x n matrix where each of the rows and columns is sorted in ascending order, return the kᵗʰ smallest
+element in the matrix.
+
+Note that it is the kᵗʰ smallest element in the sorted order, not the kᵗʰ distinct element.
+
+Example 1:
+Input: matrix = [[1,5,9],[10,11,13],[12,13,15]], k = 8
+Output: 13
+Explanation: The elements in the matrix are [1,5,9,10,11,12,13,13,15], and the 8ᵗʰ smallest number is 13
+
+1. Method: Min Heap
+    1. Insert first row into container.
+    2. Now pop an element from container and push its next element to ensure that we are following ascending order.
+    3. Will return kth popped element.
+
+T = O(K + KLogK)
+*/
+// Solution:
+class Solution {
+public:
+    struct comparator
+    {
+        bool operator()(vector<int> a, vector<int> b)
+        {
+            return a[0] > b[0];
+        }
+    };
+    int kthSmallest(vector<vector<int>>& matrix, int k)
+    {
+        priority_queue<vector<int>, vector<vector<int>>, comparator> container;
+        int n = matrix.size(), m = matrix[0].size();
+        int answer = matrix[0][0], entry = 0;
+
+        for(int i = 0; i < n; i++)
+            container.push({matrix[i][0], i, 0});
+        int i = 0;
+        while(i < k)
+        {
+            vector<int> temp = container.top();
+            answer = temp[0];
+            container.pop();
+            i += 1;
+
+            if((temp[2] + 1) < m)
+                container.push({matrix[temp[1]][temp[2] + 1], temp[1], temp[2] + 1});
+        }
+
+        return answer;
+    }
+};

@@ -1,0 +1,45 @@
+/*
+Name: Longest Valid Parentheses
+Statement:
+Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed)
+parentheses substring.
+
+Example 1:
+Input: s = "(()"
+Output: 2
+Explanation: The longest valid parentheses substring is "()".
+
+Example 2:
+Input: s = ")()())()"
+Output: 4
+Explanation: The longest valid parentheses substring is "()()".
+
+1. Method: Stack
+    1. When current is ')' then check if stack has '(' on its top. If yes, pop and store maximum count such braces into
+       result.
+    2. Will push index onto stack and so that we can retrieve maximum valid parenthesis substring easily.
+    3. In-short we are storing invalid parentheses in stack and popping valid parenthesis.
+*/
+// Solution:
+class Solution {
+public:
+    int longestValidParentheses(string s)
+    {
+        int answer = 0;
+        stack<int> stackHolder;
+
+        for(int i = 0; i < s.size(); i++)
+        {
+            if(s[i] == ')' && !stackHolder.empty() && s[stackHolder.top()] == '(')
+                stackHolder.pop();
+            else
+                stackHolder.push(i);
+
+            int fact = !stackHolder.empty() ? i - stackHolder.top() : i + 1;
+            answer = max(answer, fact);
+        }
+
+        return answer;
+    }
+};
+

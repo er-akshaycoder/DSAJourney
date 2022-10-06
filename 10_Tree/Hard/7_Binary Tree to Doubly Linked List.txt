@@ -1,0 +1,51 @@
+/*
+Name: Binary Tree to Doubly Linked List
+Statement:
+Not Required
+
+Example:
+Input:
+       10
+      /   \
+     20   30
+   /   \
+  40   60
+Output: 40 -> 20 -> 60 -> 10 -> 30
+
+1. Method: In-place conversion - Inorder
+    1. Maintain one global pointer to point last encountered a node, say prev.
+    2. Go to left subtree till null, and make current node as head(if head == NULL).
+    3. Else, make current -> left = Prev and prev -> right = current
+    4. Go to right subtree.
+
+*/
+// Solution:
+class Solution
+{
+    public:
+    //Function to convert binary tree to doubly linked list and return it.
+    void convert(Node *root, Node **head)
+    {
+        if(!root)       return;
+
+        static Node* prev = NULL;
+        convert(root -> left, head);
+        if(*head == NULL)
+            *head = root;
+        else
+        {
+            prev -> right = root;
+            root -> left = prev;
+        }
+        prev = root;
+        convert(root -> right, head);
+    }
+    Node * bToDLL(Node *root)
+    {
+        Node *head = NULL;
+
+        convert(root, &head);
+
+        return head;
+    }
+};

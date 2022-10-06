@@ -1,0 +1,76 @@
+/*
+Name: Next Greater Node In Linked List
+Statement:
+You are given the head of a linked list with n nodes. For each node in the list, find the value of the next greater
+node. That is, for each node, find the value of the first node that is next to it and has a strictly larger value than
+it.
+Return an integer array answer where answer[i] is the value of the next greater node of the iᵗʰ node (1-indexed).
+If the iᵗʰ node does not have a next greater node, set answer[i] = 0.
+
+Example:
+Input: head = [2,7,4,3,5]
+Output: [7,0,5,5,0]
+
+Method 1: Brute Force
+1. Use two loops on given linked list, first will pick each element one by one and second will check for next greater
+   element.
+
+Method 2: Stack
+1. Reverse the given list and start scanning the list.
+2. If current element is less than stack top's, output the stack top's element into array and push the current element
+   onto stack as it may be answer for future element.
+3. Else if current element is greater than stack top's, pop all the element which are less than or equal to current
+   element as we don't need all lesser previous elements and output the last entry of stack into array, and Push the
+   current element onto stack.
+*/
+// Implementation:
+class Solution {
+public:
+    vector<int> nextLargerNodes(ListNode* head)
+    {
+        stack<int> s;
+        int n = 0;
+        ListNode *back, *mid, *temp;
+        temp = head;
+        back = NULL;
+
+        while(temp)
+        {
+            mid = temp;
+            temp = temp -> next;
+            mid -> next = back;
+            back =mid;
+            n += 1;
+        }
+        cout<<back -> val;
+        vector<int> answer(n , 0);
+        temp = back;
+        int i =  n - 1;
+        while(temp)
+        {
+            if(s.empty() || temp -> val < s.top())
+            {
+                if(s.empty())
+                    answer[i] = 0;
+                else
+                    answer[i] = s.top();
+                s.push(temp -> val);
+            }
+            else
+            {
+                while(!s.empty() && temp -> val >= s.top())
+                    s.pop();
+                if(s.empty())
+                    answer[i] = 0;
+                else
+                    answer[i] = s.top();
+                s.push(temp -> val);
+            }
+            temp = temp -> next;
+            i -= 1;
+        }
+        return answer;
+    }
+};
+
+

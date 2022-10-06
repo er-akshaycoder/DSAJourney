@@ -1,0 +1,51 @@
+/*
+Name: Reorder List
+Statement:
+Given a singly linked list: A0→A1→…→An-1→An, reorder it to: A0→An→A1→An-1→A2→An-2→…
+For example: Given 1->2->3->4->5 its reorder is 1->5->2->4->3.
+
+Method 1: Efficient
+1. Split give linked list into two lists using two pointers.
+2. Reverse second list.
+3. Append the nodes of both lists alternatively.
+Note: Need to handle corner cases In case odd linked list.
+*/
+// Implementation:
+
+void reorderList(Node* head)
+{
+    if(head == NULL || head -> next == NULL)
+        return;
+
+    Node *temp, *slow, *fast, *t1, *t2, *flag, *prev;
+    slow = fast = head;
+
+    while(fast && fast -> next)
+    {
+        prev = slow;
+        slow = slow -> next;
+        fast = fast -> next -> next;
+    }
+    prev -> next = NULL;
+    flag = temp = slow;
+    slow  = NULL;
+    while(temp)
+    {
+        fast = temp;
+        temp = temp -> next;
+        fast -> next = slow;
+        slow = fast;
+    }
+
+    fast = head;
+    while(fast)
+    {
+        t1 = fast -> next;
+        t2 = slow -> next;
+        fast -> next = slow;
+        if(t1 != NULL)
+            slow -> next = t1;
+        fast = t1;
+        slow = t2;
+    }
+}

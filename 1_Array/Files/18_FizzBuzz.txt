@@ -1,0 +1,41 @@
+/*
+Name : Fizz Buzz
+Problem Statement:
+    Given an integer n, return a string array answer (1-indexed) where:
+     answer[i] == "FizzBuzz" if i is divisible by 3 and 5.
+     answer[i] == "Fizz" if i is divisible by 3.
+     answer[i] == "Buzz" if i is divisible by 5.
+     answer[i] == i (as a string) if none of the above conditions are true.
+*/
+
+class Solution {
+public:
+    vector<string> fizzBuzz(int n)
+    {
+        vector<string> str;
+        string divBy3 = "Fizz", divBy5 = "Buzz";
+
+        for(int i = 1; i <= n; i++)
+        {
+            int f = 0;
+            string s = "";
+
+            if((i % 3) == 0)
+            {
+                s += divBy3;
+                f = 1;
+            }
+            if((i % 5) == 0)
+            {
+                s += divBy5;
+                f = 1;
+            }
+            if(f == 0)
+                s += to_string(i);
+
+            str.push_back(s);
+        }
+
+        return str;
+    }
+};

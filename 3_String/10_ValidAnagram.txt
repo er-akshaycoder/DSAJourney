@@ -1,0 +1,52 @@
+/*
+Name: Valid Anagram
+Statement:
+    Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+    An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all
+    the original letters exactly once.
+
+    Example 1:
+    Input: s = "anagram", t = "nagaram"
+    Output: true
+
+Method 1: Brute force
+    1. Use two for loops and check quality for each character.
+    2. If Match found, just replace it in second string with another delimiter
+
+Method 2: Sorting
+    1. Sort the both strings and check their character's equality.
+
+Method 3: HashTable (STL)
+    1. Use Unordered_map to store frequency of first string
+    2. Traverse second string check if each character has same frequency using hashtable
+
+Method 4: HashTable(Array of 26)
+    1. Create array of size 26 and use this as hash table.
+
+Implementation:
+class Solution {
+public:
+    bool isAnagram(string s, string t)
+    {
+        int n = s.size();
+        int m = t.size();
+        int hashTable[26] = {0};
+
+        if(n != m)
+            return false;
+
+        for(int i = 0; i < n; i++)
+            hashTable[s[i] - 97] += 1;
+
+        for(int i = 0; i < m; i++)
+        {
+            if(!hashTable[t[i] - 97])
+                return false;
+            else
+                hashTable[t[i] - 97] -= 1;
+        }
+
+        return true;
+    }
+};
+*/

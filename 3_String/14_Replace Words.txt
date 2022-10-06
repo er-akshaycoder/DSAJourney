@@ -1,0 +1,71 @@
+/*
+Name: Replace Words
+Statement:
+Given a dictionary consisting of many roots and a sentence consisting of words separated by spaces, replace all the
+successors in the sentence with the root forming it. If a successor can be replaced by more than one root, replace it
+with the root that has the shortest length. Return the sentence after the replacement.
+
+Example 1:
+Input: dictionary = ["cat","bat","rat"], sentence = "the cattle was rattled by
+the battery"
+Output: "the cat was rat by the bat"
+Explanation:
+["cat","bat","rat"]
+"the cattle was rattled by the battery"
+
+Method 1: Brute Force
+1. Use two for loops, one is for iterating dictionary and another for string.
+2. Form the word and check of dictionary[i] is prefix of formed word
+3. If yes, just replace word with dictionary[i].
+
+Method 1: Hash Table
+1. Use predefined unordered map with string as key and integer as value.
+2. Insert all words of dictionary into hashtable with their location.
+2. While forming word until space, just check if formed word so far is present in hash table.
+3. If yes, just append dictionary[index] to answer string else append formed word where index is the hashtable[word]
+  value which were found.
+
+Implementation:
+class Solution {
+public:
+    string replaceWords(vector<string>& dictionary, string sentence)
+    {
+        unordered_map<string, int> hashTable;
+        sentence += '$';
+
+        for(int i = 0; i < dictionary.size(); i++)
+            hashTable.insert({dictionary[i], i});
+
+        string word = "";
+        string answer;
+        int index = -1, j = -1;
+        for(int i = 0; i < sentence.size(); i++)
+        {
+            if(isspace(sentence[i]) || sentence[i] == '$')
+            {
+                cout<<word<<":";
+                if(index != -1)
+                {
+                    if(i - word.size() >= 0)
+                        answer += dictionary[index] + sentence[i];
+                }
+                else
+                    answer += word + sentence[i];
+                word = "";
+                index = -1;
+            }
+            else
+            {
+                word += sentence[i];
+                if(hashTable.find(word) != hashTable.end() && index == -1)
+                {
+                    index = hashTable[word];
+                }
+            }
+        }
+        if(!answer.empty())
+            answer.pop_back();
+        return answer;
+    }
+};
+*/

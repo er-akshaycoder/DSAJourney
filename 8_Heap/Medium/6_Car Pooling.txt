@@ -1,0 +1,58 @@
+/*
+Name: Car Pooling
+Statement:
+There is a car with capacity empty seats. The vehicle only drives east (i.e., it cannot turn around and drive west).
+
+You are given the integer capacity and an array trips where trips[i] = [numPassengersi, fromi, toi] indicates that the
+iᵗʰ trip has numPassengersi passengers and the locations to pick them up and drop them off are fromi and toi
+respectively. The locations are given as the number of kilometers due east from the car's initial location.
+
+Return true if it is possible to pick up and drop off all passengers for all the given trips, or false otherwise.
+
+Example 1:
+Input: trips = [[2,1,5],[3,3,7]], capacity = 4
+Output: false
+
+Example 1:
+Input: trips = [[7,5,6],[6,7,8], [10,1,6]], capacity = 16
+Output: false
+
+1. Method: Sorting
+    1. Sort the start and end points of each stop with flag to denote start or end.
+    2. Scan the sorted array and add passengers to currentPassengers if scanned element is start else subtract it.
+    3. Check if currentPassengers crosses given capacity
+
+2. Method: Hash Table
+    1. Instead of sorting array directly, we can use map here as start, end would not be GT 1000.
+    2. At start point we will add the passengers and at end will subtract passengers.
+    3. Scan the map, keep on adding passengers to currentPassengers and check if currentPassengers at any point in map.
+
+*/
+// Solution:
+class Solution {
+public:
+    bool carPooling(vector<vector<int>>& trips, int capacity)
+    {
+        map<int, int> timeline;
+
+        for(const auto& trip : trips)
+        {
+            int passengers = trip[0];
+            int start = trip[1];
+            int end = trip[2];
+
+            timeline[start] += passengers;
+            timeline[end] -= passengers;
+        }
+        int currentPassengers = 0;
+        for(const auto entry: timeline)
+        {
+            currentPassengers += entry.second;
+            if(currentPassengers > capacity)
+                return false;
+        }
+
+        return true;
+    }
+};
+

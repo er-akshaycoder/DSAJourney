@@ -1,0 +1,54 @@
+/*
+Name: Kth element in Matrix
+Statement:
+Given a N x N matrix, where every row and column is sorted in non-decreasing order. Find the kth smallest element in
+the matrix.
+Input:
+ N = 4
+ mat[][] =     {{16, 28, 60, 64},
+                    {22, 41, 63, 91},
+                    {27, 50, 87, 93},
+                    {36, 78, 87, 94 }}
+ K = 3
+ Output: 27
+ Explanation: 27 is the 3rd smallest element.
+
+Method: Priority Queue/Heap Sort
+1. Insert first row into min heap with row and column number.
+2. Remove the root(minimum) from heap and add next element in same column to heap.
+3. Repeat step 2 for k times and return the last popped entry.
+
+Complexity:
+    T = O(KLogN)
+*/
+struct cell{
+    int x, y, data;
+    cell(int a, int b, int c){
+        x = a;
+        y = b;
+        data = c;
+    }
+};
+int kthSmallest(int mat[MAX][MAX], int n, int k)
+{
+    priority_queue<cell, vector<cell>> queue;
+
+    for(int i = 0; i < n; i++)
+        queue.push(cell(0, i, mat[0][i]));
+
+    cell element;
+    for(int i = 0; i < k; i++)
+    {
+        element = queue.front();
+        queue.pop();
+        int r = element.x + 1;
+        int c = element.y;
+
+        if(r >= n)
+            continue;
+
+        queue.push(cell(r, c, mat[r][c]));
+    }
+
+    return element.data;
+}

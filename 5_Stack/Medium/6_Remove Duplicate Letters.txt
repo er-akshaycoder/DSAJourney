@@ -1,0 +1,61 @@
+/*
+Name: Remove Duplicate Letters
+Statement:
+Given a string s, remove duplicate letters so that every letter appears once and only once. You must make sure your
+result is the smallest in lexicographical order among all possible results.
+
+Example 1:
+Input: s = "bcabc"
+Output: "abc"
+
+Example 2:
+Input: s = "cbacdcbc"
+Output: "acdb"
+
+1. Method 1: Stack
+    1. Build the hash table with characters frequencies.
+    2. Start scanning a string and reduce frequency of current character by 1.
+    3. If Current character is less than and if top character's remaining frequency is non 0, then pop out that character
+    4. Else, check if current char is added already in stack or not, if not then push it onto a stack.
+    5. Note: You have to check if current char is added already in stack or not before step 3 as small character will
+       pop-out the entry. Example: s = abacb, ans = abc
+
+Note: Here, I have used string instead of stack to avoid later joining and reversing step.
+*/
+// Solution:
+
+class Solution {
+public:
+    string removeDuplicateLetters(string s)
+    {
+        if(!s.size())
+            return s;
+
+        string answer;
+        int hashTable[26] = {0};
+        bool isAdded[26] = {false};
+
+        for(int i = 0; i < s.size(); i++)
+            hashTable[s[i] - 'a'] += 1;
+
+        for(int i = 0; i < s.size(); i++)
+        {
+            char ch = s[i];
+
+            hashTable[ch - 'a'] -= 1;
+            if(isAdded[ch - 'a'])   continue;
+            while(i > 0 && answer.back() > ch && hashTable[answer.back() - 'a'] > 0)
+            {
+                isAdded[answer.back() - 'a'] = false;
+                answer.pop_back();
+            }
+
+           if(!isAdded[ch - 'a'])
+                answer.push_back(ch);
+
+            isAdded[ch - 'a'] = true;
+        }
+
+        return answer;
+    }
+};

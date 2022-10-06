@@ -1,0 +1,65 @@
+/*
+Name: Next smallest palindrome
+statement:
+To understand problem statement and Logic: https://www.youtube.com/watch?v=hZcindWcYI4
+
+Note: Below logic can be used to solve "Find the Closest Palindrome" problem, but need to below scenarios:
+1. When first digit is greater than second, check if we can use first digit as second and vice versa if difference
+   between original two digits is less.
+
+2. When first digit is less and even length palindrome, check if we can reduce the first digit instead of increment if
+difference between original two digits is less.
+
+3. When first digit is less and odd length, reduce the middle number and check for less difference.
+
+Implementation:
+
+class Solution {
+public:
+    string nearestPalindromic(string n)
+    {
+        int len = n.size(), i = 0, j = 0;
+        bool evenLen = true;
+
+        i = len % 2 ? (len / 2) - 1 : (len / 2) - 1;
+        j = len % 2 ? (len / 2) + 1 : len / 2;
+        while((i >= 0 && j < len) && n[i] == n[j])
+        {
+            i--;
+            j++;
+        }
+        if(i < 0 || j >= len)
+            return n;
+        if(n[i] > n[j])
+            n[j] = n[i];
+        else
+        {
+            if(len % 2 == 0)
+            {
+                n[i] = n[i] + 1;
+                n[j] = n[i];
+            }
+            else
+            {
+                int result = ((n[len % 2] - '0') + 1) % 10;
+                n[len / 2] = (result % 10) + '0';
+                if(result / 10)
+                    n[len / 2 - 1] = n[len / 2 - 1] + (result / 10);
+                j -= 1;
+                i -= 1;
+            }
+        }
+        i -= 1;
+        j += 1;
+        while(i >= 0 && j < len)
+        {
+            n[j] = n[i];
+            i--;
+            j++;
+        }
+
+        return n;
+    }
+};
+
+*/

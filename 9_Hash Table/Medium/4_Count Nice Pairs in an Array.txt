@@ -1,0 +1,57 @@
+/*
+Name: Count Nice Pairs in an Array
+Statement:
+You are given an array nums that consists of non-negative integers. Let us define rev(x) as the reverse of the
+non-negative integer x. For example, rev(123) = 3 21, and rev(120) = 21. A pair of indices (i, j) is nice if it
+satisfies all the following conditions:
+    0 <= i < j < nums.length
+    nums[i] + rev(nums[j]) == nums[j] + rev(nums[i])
+
+Return the number of nice pairs of indices. Since that number can be too large, return it modulo 10⁹ + 7.
+
+Example 1:
+Input: nums = [42,11,1,97]
+Output: 2
+Explanation: The two pairs are:
+- (0,3) : 42 + rev(97) = 42 + 79 = 121, 97 + rev(42) = 97 + 24 = 121.
+- (1,2) : 11 + rev(1) = 11 + 1 = 12, 1 + rev(11) = 1 + 11 = 12.
+
+1. Method: Hash Table
+    1. Equation: a + rev-b = b + rev-a
+              => a - rev-a = b - rev-b
+    2. So, here we have to push differences between a number and its reversal into container.
+    3. Before, pushing it into container, just check if you have calculated difference already in container.
+
+*/
+// Solution:
+class Solution {
+public:
+    int getReverse(int num)
+    {
+        int number = num, reversal = 0;
+
+        while(number)
+        {
+            reversal = (reversal * 10) + number % 10;
+            number /= 10;
+        }
+
+        return num - reversal;
+    }
+    int countNicePairs(vector<int>& nums)
+    {
+        unordered_map<int, int> container;
+        int answer = 0, mod = 1e9 + 7;
+
+        for(int i = 0; i < nums.size(); i++)
+        {
+            int diff = getReverse(nums[i]);
+            cout<<diff<<" ";
+            if(container.find(diff) != container.end())
+                answer = (answer + container[diff]) % mod;
+            container[diff] += 1;
+        }
+
+        return answer ;
+    }
+};

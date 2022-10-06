@@ -1,0 +1,93 @@
+/*
+Name: Integer to English Words
+Statement:
+Convert a non-negative integer num to its English words representation.
+Example 1:
+Input: num = 123
+Output: "One Hundred Twenty Three"
+
+Example 2:
+Input: num = 12345
+Output: "Twelve Thousand Three Hundred Forty Five"
+
+Note: Here we have to consider Million, Billion instead of Lakh and Crore
+
+Method 1: Efficient
+1. Store all the distinct words which are used to call out a number into a hashtable.
+2. By observation, we can use 1000 as cutoff criteria as we have three criteria Thousand, Million and Billion
+3. These all units have 1000 has cutoff number. For example 1234, if we multiply this number by 1000, we get number in
+   Million (1234000) and again if we multiply it by 1000 then we get number in Billion (1234000000).
+3. So we can use 1000 as cutoff number to check if number fits into 0 - 999 or 1000 - 999999 or 1000000 - 999999999
+4. We can split number according to this group and then we append the words of digits
+5. Example:
+    Num = 43589
+    rem = num % 1000;                   rem = 589
+    if(rem):                            // true
+        if rem / 100:                   // true
+            ans += hashtable[rem / 100]
+        if rem % 100:                   // true
+            if hashtable[rem % 100] present:
+                ans += hashtable[rem % 100]
+            else
+                ans += hashtable[rem / 10 * 10]
+    i += 1
+
+    for second time just, insert Thousand after processing a number
+
+Implementation:
+class Solution {
+public:
+    void processThreeDigits(int rem, string& answer, unordered_map<int, string> lookup)
+    {
+        if(rem / 100)
+            answer += lookup[rem / 100]+ " " + "Hundred ";
+
+        if(rem % 100)
+        {
+            int digits = rem % 100;
+            if(lookup.find(digits) != lookup.end())
+                answer += lookup[rem % 100] + " ";
+            else
+                answer += lookup[(digits / 10) * 10] + " " + lookup[digits % 10]+ " ";
+        }
+    }
+    string numberToWords(int num)
+    {
+        if(num == 0)
+            return "Zero";
+
+        string answer;
+        unordered_map<int, string> lookup = {{0, "Zero"}, {1, "One"}, {2, "Two"},
+                                                   {3, "Three"}, {4, "Four"}, {5, "Five"},
+                                                   {6, "Six"}, {7, "Seven"}, {8, "Eight"},
+                                                   {9, "Nine"}, {10, "Ten"}, {11, "Eleven"},
+                                                   {12, "Twelve"}, {13, "Thirteen"}, {14, "Fourteen"},
+                                                   {15, "Fifteen"}, {16, "Sixteen"}, {17, "Seventeen"},
+                                                   {18, "Eighteen"}, {19, "Nineteen"}, {20, "Twenty"},
+                                                   {30, "Thirty"}, {40, "Forty"}, {50, "Fifty"},
+                                                   {60, "Sixty"}, {70, "Seventy"}, {80, "Eighty"},
+                                                   {90, "Ninety"}};
+
+        string units[4] = {"","Thousand ", "Million ", "Billion "};
+        int i = 0;
+        while(num)
+        {
+            string parts = "";
+            int rem = num % 1000;
+            if(rem)
+            {
+                processThreeDigits(rem, parts, lookup);
+                if(i >= 1)
+                    parts += units[i];
+            }
+            num = num / 1000;
+            i += 1;
+
+            answer = parts + answer;
+        }
+        if(answer[answer.size() - 1] == ' ')
+            answer.pop_back();
+        return answer;
+    }
+};
+*/

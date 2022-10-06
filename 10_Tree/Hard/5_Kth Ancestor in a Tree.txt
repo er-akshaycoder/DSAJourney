@@ -1,0 +1,43 @@
+/*
+Name: Kth Ancestor in a Tree
+Statement:
+Given a binary tree of size  N, a node and a positive integer k., Your task is to complete the function kthAncestor(),
+the function should return the kth ancestor of the given node in the binary tree. If there does not exist any such
+ancestor then return -1.
+
+Example:
+Input:
+k=1
+node=3
+      1
+    /   \
+    2     3
+
+Output: 1
+
+1. Method: Post-Order Recursion.
+    1. If current node matching with target then return 1
+    2.
+
+*/
+// Solution:
+int getKthAncestor(Node* root, int k, int node, int *answer)
+{
+    if(!root)       return -1;
+
+    if(root -> data == node)
+        return 1;
+
+    int leftStatus = getKthAncestor(root -> left, k, node, answer);
+    int rightStatus = getKthAncestor(root -> right,  k, node, answer);
+
+    if(leftStatus != -1 || rightStatus != -1)
+    {
+        if(leftStatus == k || rightStatus == k)
+            *answer = root -> data;
+
+        return rightStatus != -1 ? rightStatus + 1: leftStatus + 1;
+    }
+    else
+        return -1;
+}

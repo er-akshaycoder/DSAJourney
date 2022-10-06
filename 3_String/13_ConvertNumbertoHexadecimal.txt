@@ -1,0 +1,55 @@
+/*
+Name: Convert a Number to Hexadecimal
+Statement:
+Given an integer num, return a string representing its hexadecimal representation. For negative integers, two’s
+complement method is used. All the letters in the answer string should be lowercase characters, and there should not be
+any leading zeros in the answer except for the zero itself.
+Note: You are not allowed to use any built-in library method to directly solve this problem.
+
+Example 1:
+Input: num = 26
+Output: "1a"
+Example 2:
+Input: num = -1
+Output: "ffffffff"
+
+Method 1: Bit Manipulation
+    1. We know that we convert decimal to hexadecimal using two step:
+         i. Convert Decimal to Binary
+        ii. Convert Binary to Hexadecimal using chunk of 4 bits
+        Example:
+            Num = 10
+             i. Binary: 00001010
+            ii. take last 4 bits and check its equivalent hexadecimal.
+    1. Take Bit Anding of num and 15, it will give you last 4 bit formed number (In above case it is 10)
+    2. If formed number is less than 10, directly add its corresponding number as character.
+    3. Else, use ascii of number i.e. 'a' + num - 10
+    5. Right shift given num by 4 to divide it by 16
+    5. We have to take special care while dealing with negative as right shifting won't give 0 for negative number
+       and hence, we have to go till result string becomes of length 8.
+
+Implementation:
+class Solution {
+public:
+    string toHex(int num)
+    {
+        string answer;
+
+        while(num && answer.size() != 8)
+        {
+            int part = num & 15;
+
+            if(part < 10)
+                answer.push_back('0' + part);
+            else
+                answer.push_back('a' + part - 10);
+
+            num = num >> 4;
+        }
+        cout<<num;
+        reverse(answer.begin(), answer.end());
+        return answer;
+    }
+};
+
+*/

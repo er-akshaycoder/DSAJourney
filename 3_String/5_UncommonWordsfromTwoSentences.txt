@@ -1,0 +1,74 @@
+/*
+Name: Uncommon Words from Two Sentences
+Statement:
+A word is uncommon if it appears exactly once in one of the sentences, and does not appear in the other sentence.
+Given two sentences s1 and s2, return a list of all the uncommon words. You may return the answer in any order.
+
+Example 1:
+ Input: s1 = "this apple is sweet", s2 = "this apple is sour"
+Output: ["sweet","sour"]
+
+Method 1: Brute-Force
+1. Split both strings by space.
+2. Scan s1 array and check duplicity of each element with itself and s2.
+3. If element found to be unique, just insert into final answer.
+
+Method 2: Split and Sorting
+1. Split both strings by space.
+2. Check its duplicity using two pointers.
+
+Method 3: BST
+1. Store each word in BST with its count.
+
+Method 1: Hash Table
+1. Hash Table to store occurrences of words for both string.
+
+Implementation:
+class Solution {
+public:
+    vector<string> uncommonFromSentences(string s1, string s2)
+    {
+        unordered_map<string, int> hashTable;
+        string s = "";
+
+        s1 += '$';
+        s2 += '$';
+        for(int i = 0; i < s1.size(); i++)
+        {
+            if(s1[i] == ' ' || s1[i] == '$')
+            {
+                if(hashTable.find(s) != hashTable.end())
+                    hashTable[s] += 1;
+                else
+                    hashTable[s] = 1;
+                s = "";
+            }
+            else
+                s += s1[i];
+        }
+        for(int i = 0; i < s2.size(); i++)
+        {
+            if(s2[i] == ' ' || s2[i] == '$')
+            {
+                if(hashTable.find(s) != hashTable.end())
+                    hashTable[s] += 1;
+                else
+                    hashTable[s] = 1;
+                s = "";
+            }
+            else
+                s += s2[i];
+        }
+        vector<string> answer;
+
+        for(auto itr : hashTable)
+        {
+            if(itr.second == 1)
+                answer.push_back(itr.first);
+        }
+
+        return answer;
+    }
+};
+
+*/

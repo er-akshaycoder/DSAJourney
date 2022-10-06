@@ -1,0 +1,55 @@
+/*
+Name: Nth Magical Number
+Statement:
+A positive integer is magical if it is divisible by either a or b.
+
+Given the three integers n, a, and b, return the nᵗʰ magical number. Since the answer may be very large, return it
+modulo 10⁹ + 7.
+
+Example 1:
+Input: n = 8, a = 4, b = 6
+Output: 6
+
+1. Method: Efficient
+    1. Form next number by adding corresponding no. into one which popped out.
+    2. To do so, take minimum from given two numbers and add a or b as per one which was returned last time.
+    3. Example:
+        n   =   1   2   3   4   5   6   7   8
+        res =   4   6   8   12  16  18  20  24
+
+        min(a, b)       --> 4
+        min(4 + a, b)   --> 6
+        min(a, b + 6)   --> 8
+
+*/
+// Solution:
+class Solution {
+public:
+    int nthMagicalNumber(int n, int a, int b)
+    {
+        long answer, num1 = a, num2 = a == b ? a  * 2 : b;
+        long threshold = 1e9 + 7;
+        while(n--)
+        {
+            answer = min(num1, num2);
+            if(answer == num1)
+            {
+                if((num1 + a) != num2)
+                    num1 += a;
+                else
+                    num1 += a * 2;
+            }
+            else
+            {
+                if((num2 + b) != num1)
+                    num2 += b;
+                else
+                    num2 += b * 2;
+            }
+            cout<<answer<<" ";
+        }
+
+        return answer % threshold;
+    }
+};
+

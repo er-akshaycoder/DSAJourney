@@ -1,0 +1,36 @@
+/*
+Name: Jump Game
+Statement:
+You are given an integer array nums. You are initially positioned at the array's first index, and each element in
+the array represents your maximum jump length at that position.
+Return true if you can reach the last index, or false otherwise.
+
+Example 1:
+Input: nums = [2,3,1,4,1,1,2,1]
+Output: true
+
+1. Method: Auxiliary Array
+    1. Store max reachable index from ith index in jump[i].
+    2. Just check if jump[i - 1] + 1 < i, if true return false
+
+2. Method: Greedy
+    1. Take one variable that will hold maximum reachable index from current element.
+
+*/
+// Solution:
+class Solution {
+public:
+    bool canJump(vector<int>& nums)
+    {
+        int reachableIndex = 0;
+
+        for(int i = 0; i < nums.size(); i++)
+        {
+            if(reachableIndex < i)
+                return false;
+            reachableIndex = max(nums[i] + i, reachableIndex);
+        }
+
+        return true;
+    }
+};

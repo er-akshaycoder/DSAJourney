@@ -1,0 +1,121 @@
+/*
+Name: Find distance between 2 nodes in a Binary tree
+Statement:
+Given a binary tree and two node values your task is to find the minimum distance between them.
+
+Example:
+Input:
+        1
+      /  \
+     2    3
+a = 2, b = 3
+Output: 2
+
+1. Method: Mathematics
+    1. Find distances of two nodes with root, say d1 & d2
+    2. Find Distance of LCA node.
+    3. D = d1 + d2 - 2 * d';
+
+2. Method: Efficient
+    1. Find LCA
+    2. Find distances of two nodes with LCA, say d1 & d2
+    3. D = d1 + d2;
+
+Note: Two solutions for method 2
+*/
+// Solution:
+1. Top-Bottom
+class Solution{
+    public:
+
+    Node* getLCA(Node* root, int a, int b)
+    {
+        if(!root)       return NULL;
+
+        if(root -> data == a || root -> data == b)
+            return root;
+
+        Node* leftLCA = getLCA(root -> left, a, b);
+        Node* rightLCA = getLCA(root -> right, a, b);
+
+        if(leftLCA && rightLCA)
+            return root;
+
+        return leftLCA ? leftLCA : rightLCA;
+
+    }
+    int getDistance(Node* root, int key, int level)
+    {
+        if(!root)       return -1;
+
+        if(root -> data == key)
+            return level;
+
+        int leftStatus = getDistance(root -> left, key, level + 1);
+        if(leftStatus != -1)
+            return leftStatus;
+
+        return getDistance(root -> right,  key, level + 1);
+
+    }
+    int findDist(Node* root, int a, int b)
+    {
+        int distance1, distance2;
+
+        Node* rootLCA = getLCA(root, a, b);
+
+        distance1 = getDistance(rootLCA, a, 0);
+        distance2 = getDistance(rootLCA, b, 0);
+
+        return distance1 + distance2;
+    }
+};
+
+
+2. Bottom-up
+class Solution{
+    public:
+
+    Node* getLCA(Node* root, int a, int b)
+    {
+        if(!root)       return NULL;
+
+        if(root -> data == a || root -> data == b)
+            return root;
+
+        Node* leftLCA = getLCA(root -> left, a, b);
+        Node* rightLCA = getLCA(root -> right, a, b);
+
+        if(leftLCA && rightLCA)
+            return root;
+
+        return leftLCA ? leftLCA : rightLCA;
+
+    }
+    int getDistance(Node* root, int key)
+    {
+        if(!root)       return -1;
+
+        if(root -> data == key)
+            return 1;
+
+        int leftStatus = getDistance(root -> left, key);
+        if(leftStatus != -1)
+            return leftStatus + 1;
+
+        int rightStatus = getDistance(root -> right,  key);
+
+        return rightStatus != -1 ? rightStatus + 1: -1;
+    }
+    int findDist(Node* root, int a, int b)
+    {
+        int distance1, distance2;
+
+        Node* rootLCA = getLCA(root, a, b);
+
+        distance1 = getDistance(rootLCA, a);
+        distance2 = getDistance(rootLCA, b);
+
+        return distance1 + distance2 - 2;
+    }
+};

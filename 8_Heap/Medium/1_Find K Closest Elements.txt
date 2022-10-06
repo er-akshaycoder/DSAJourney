@@ -1,0 +1,82 @@
+/*
+Name: Find K The Closest Elements
+Statement:
+Given a sorted integer array arr, two integers k and x, return the k the closest integers to x in the array.
+The result should also be sorted in ascending order.
+
+An integer a is closer to x than an integer b if:
+    |a - x| < |b - x|, or
+    |a - x| == |b - x| and a < b
+
+
+
+Example 1:
+Input: arr = [1,2,3,4,5], k = 4, x = 3
+Output: [1,2,3,4]
+
+1. Method: Heap
+    1. Push Differences into container
+
+    T = (NlogK)
+
+2. Method: Two Pointers
+    1. Set j to first element and i to kth element
+    2. Check if jth is usable them ith element, if yes break the loop else increment j.
+
+    T = (N)
+
+3. Method: Binary Search & Two Pointers
+    1. Find the possible insertion index of given x into array.
+    2. Set first pointer to index - k and second j to index + k.
+    3. Now try to minimize the window as per given conditions.
+
+    T = (logN + k)
+
+*/
+// Solution:
+class Solution {
+public:
+    int getPossibleIndex(vector<int>& arr, int x)
+    {
+        int low = 0, high = arr.size() - 1;
+
+        while(low < high)
+        {
+            int mid = (low + high) / 2;
+
+            if(arr[mid] < x)
+                low = mid + 1;
+            else
+                high = mid;
+        }
+
+        return low;
+    }
+    vector<int> findClosestElements(vector<int>& arr, int k, int x)
+    {
+        int index = getPossibleIndex(arr, x);
+        vector<int> answer;
+
+        if(index > 0 && abs(arr[index - 1] - x) <= abs(arr[index] - x))
+            index -= 1;
+
+        int j = (index + k - 1) < arr.size() ? (index + k - 1) : arr.size() - 1;
+        int i = (index - k + 1) >= 0 ? (index - k + 1) : 0;
+
+        //cout<<i<<" "<<j;
+        while((j - i) >= k)
+        {
+            if(abs(arr[i] - x) <= abs(arr[j] - x))
+                j--;
+            else
+                i++;
+        }
+        while(i <= j)
+        {
+            answer.push_back(arr[i]);
+            i += 1;
+        }
+
+        return answer;
+    }
+};

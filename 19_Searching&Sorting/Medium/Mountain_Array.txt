@@ -1,0 +1,23 @@
+int peakIndexInMountainArray(vector<int>& arr)
+{
+	int low = 0, high = arr.size() - 1;
+
+	while(low < high)
+	{
+		int mid = (low + high) / 2;
+
+		if(arr[mid] < arr[mid + 1])
+			low = mid + 1;
+		else
+			high = mid;
+	}
+
+	return low;
+}
+
+/*
+Note:
+1. If you are returning an answer in above only(not at end), then you can set high to mid - 1 as we have all-ready checked answer with middle.
+2. But, if you are returning an answer at the end then you have to set high to mid as middle one not checked and making mid -1 will leads to missing check with middle element.
+3. Try to return answer at end only as you don't need to worry about edge conditions.
+*/

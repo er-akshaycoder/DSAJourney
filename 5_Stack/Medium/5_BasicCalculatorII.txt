@@ -1,0 +1,85 @@
+/*
+Name: Basic Calculator II
+Statement:
+Given a string s which represents an expression, evaluate this expression andreturn its value.
+The integer division should truncate toward zero.
+You may assume that the given expression is always valid. All intermediate results will be in the range of [-2³¹,
+2³¹ - 1].
+
+Example 1:
+Input: s = "3+2*2"
+Output: 7
+
+Example 2:
+Input: s = " 3/2 "
+Output: 1
+
+Example 3:
+Input: s = " 3+5 / 2 "
+Output: 5
+
+Note: Here, we have to consider operator precedences also, i.g. * and / before + or -
+
+Method 1: Vector
+1. Start scanning a string and do:
+    1. Split the string by operator.
+    2. If * or /, calculate the value and insert into vector.
+    3. else insert operator with digits into stack.
+2. In second pass start evaluating an expression from left
+*/
+// Solution:
+    int getVal(string oprt, int value1, int value2)
+    {
+        int value = 0;
+        switch(oprt[0])
+        {
+           case '+':
+                   value = value1 + value2;
+                   break;
+           case '-':
+                   value = value1 - value2;
+                   break;
+           case '*':
+                   value = value1 * value2;
+                   break;
+           case '/':
+                   value = value1 / value2;
+        }
+
+        return value;
+    }
+    int calculate(string s)
+    {
+        vector<string> vect;
+        string digit;
+        char oprt = '$';
+
+        s += '$';
+        for(int i = 0; i < s.size(); i++)
+        {
+            if(s[i] == ' ') continue;
+
+            if(!isalnum(s[i]))
+            {
+                if(oprt == '*' || oprt == '/')              // Here we are considering previous operator
+                    vect.back() = to_string(getVal(string(1, oprt), stoi(vect.back()), stoi(digit)));
+                else
+                    vect.push_back(digit);
+
+                if(s[i] == '+' || s[i] == '-')              // If Operator is + or -, just insert into vector
+                     vect.push_back(string(1, s[i]));
+                digit = "";
+                oprt = s[i];
+            }
+            else
+                digit += s[i];
+        }
+
+        int answer = stoi(vect[0]);
+
+        for(int i = 1; i < vect.size(); i += 2)
+            answer = getVal(vect[i], answer, stoi(vect[i + 1]));
+
+        return answer;
+    }
+};

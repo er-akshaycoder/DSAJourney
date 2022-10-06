@@ -1,0 +1,76 @@
+/*
+Name: Decode String
+Statement:
+Given an encoded string, return its decoded string.
+The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly
+k times. Note that k is guaranteed to be a positive integer.
+
+Example 1:
+Input: s = "3[a]2[bc]"
+Output: "aaabcbc"
+
+Example 2:
+Input: s = "2[a2[bc]d]"
+Output: "abcbcdabcbcd"
+
+1. Method 1: Stack
+    1. Use string stack to process the nested decoding.
+    2. If current char is non-']', then push it into a stack.
+    3. Else, we have to form a string which is enclosed in '[' and ']' and number. and hence , pop till '[' for word and
+       then pop till alphabet for number.
+    4. Reverse a formed string and number as we have formed in reverse order. But if formed string is read, need to take
+       a special care.
+    5. Once scanning done,then just a form a string from items in stack.
+*/
+// Solution:
+class Solution {
+public:
+    string decodeString(string s)
+    {
+        stack<string> stackContainer;
+        string word, digit;
+
+        for(int i = 0; i < s.size(); i++)
+        {
+            if(s[i] == ']')
+            {
+                string entry;
+                while(stackContainer.top() != "[")
+                {
+                    entry = stackContainer.top();
+                    if(entry.size() >= 2)
+                        reverse(entry.begin(), entry.end());
+                    word += entry;
+                    stackContainer.pop();
+                }
+                stackContainer.pop();
+
+                while(!stackContainer.empty() && isdigit(stackContainer.top()[0]))
+                {
+                    digit += stackContainer.top();
+                    stackContainer.pop();
+                }
+                reverse(word.begin(), word.end());
+                reverse(digit.begin(), digit.end());
+                int dig = stoi(digit);
+                digit = "";
+                while(dig--)
+                    digit += word;
+
+                stackContainer.push(digit);
+                digit = "";
+                word = "";
+            }
+            else
+                stackContainer.push(string(1, s[i]));
+        }
+        string answer;
+        while(!stackContainer.empty())
+        {
+            answer = stackContainer.top() + answer;
+            stackContainer.pop();
+        }
+
+        return answer;
+    }
+};

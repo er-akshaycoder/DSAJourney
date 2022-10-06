@@ -1,0 +1,38 @@
+/*
+Name: Number of Segments in a String
+Statement:
+Given a string s, return the number of segments in the string. A segment is defined to be a contiguous sequence
+of non-space characters.
+Example 1:
+Input: s = "Hello, my name is John"
+Output: 5
+Explanation: The five segments are ["Hello,", "my", "name", "is", "John"]
+
+Method 1: Efficient(Two pointers)
+1. Use two pointers, first pointer will scan one character one by one until it get space.
+2. Second pointer will point first character of current window
+3. If first pointer read space, just increase the count if first > second and move second pointer one location ahead to
+   first pointer.
+
+Implementation:
+class Solution {
+public:
+    int countSegments(string s)
+    {
+       s += ' ';
+       int j = 0, answer = 0;
+       for(int i = 0; i < s.size(); i++)
+       {
+            if(s[i] == ' ')
+            {
+                if(i != j)
+                    answer += 1;
+                j = i + 1;
+            }
+       }
+
+       return answer;
+    }
+};
+
+*/

@@ -1,0 +1,36 @@
+/*
+Name: 1-bit and 2-bit Characters.
+Problem Statement:  The first character can be represented by one bit 0. The second character can be represented by two
+bits (10 or 11).
+Given a binary array bits that ends with 0, return true if the last character  must be a one-bit character.
+*/
+class Solution {
+public:
+    bool isOneBitCharacter(vector<int>& bits)
+    {
+        int n = bits.size();
+        if(!bits[0] && n == 1)
+            return true;
+
+        int i = 0, j = 1;
+        bool type;
+
+        while(i < n)
+        {
+            if(j < n && (bits[i] && bits[j]) || (bits[i] && !bits[j]))
+            {
+                type = false;
+                i += 2;
+                j += 2;
+            }
+            else
+            {
+                type = true;
+                i += 1;
+                j += 1;
+            }
+        }
+
+        return type;
+    }
+};

@@ -1,0 +1,93 @@
+/*
+Name : Three Equal Parts
+
+Problem Statement:
+You are given an array arr which consists of only zeros and ones, divide the array into three non-empty parts such that
+all of these parts represent the same binary value.
+If it is possible, return any [i, j] with i + 1 < j, such that:
+ arr[0], arr[1], ..., arr[i] is the first part,
+ arr[i + 1], arr[i + 2], ..., arr[j - 1] is the second part, and
+ arr[j], arr[j + 1], ..., arr[arr.length - 1] is the third part.
+ All three parts have equal binary values.
+
+If it is not possible, return [-1, -1].
+
+Note that the entire part is used when considering what binary value it
+represents. For example, [1,1,0] represents 6 in decimal, not 3. Also, leading zeros
+are allowed, so [0,1,1] and [1,1] represent the same value.
+
+Example 1:
+Input: arr = [1,0,1,0,1]
+
+Logic:
+1. To divide an array into three parts with equal values, we should have the same number of 1's in an every part
+   otherwise it is not possible to divide an array.
+1. Count total number of 1's in an array and divide it by 3.
+2. Now use two pointers, right one will point to first 1's and left will point to last 1's from right.
+4. Now you can find the 3rd part by binary sub-array [right,....,n-1].
+5. Just Compare 3rd part to remaining 2 parts and adjust the i, j accordingly.
+*/
+class Solution {
+public:
+    vector<int> threeEqualParts(vector<int>& arr)
+    {
+        int n = arr.size(), count = 0;
+
+        for(int i = 0; i < n; i++)
+        {
+            if(arr[i])
+                count += 1;
+        }
+
+        if(count == 0)
+            return {0, n - 1};
+
+        if(count % 3)
+            return {-1, -1};
+
+        count /= 3;
+
+        int cnt = 0, b = -1, a = -1;
+        for(int i = n - 1; i >= 0; i--)
+        {
+            if(arr[i])
+            {
+                cnt += 1;
+                a = i;
+            }
+            if(b == -1 && cnt == count)
+                b = i;
+        }
+        cout<<a<<b;
+
+        int i, j = -1, k = b;
+        i = a;
+        while(b < n)
+        {
+            if(arr[i] != arr[b])
+                return {-1, -1};
+
+            i += 1;
+            b += 1;
+        }
+        i -= 1;
+
+        j = i + 1, b = k;
+        while(!arr[j])
+            j++;
+
+        if(j >= k)
+            return {-1, -1};
+
+        while(b < n)
+        {
+            if(arr[j] != arr[b])
+                return {-1, -1};
+
+            j += 1;
+            b += 1;
+        }
+
+        return {i, j};
+    }
+};

@@ -1,0 +1,58 @@
+/*
+Name: Count Binary Substrings
+Statement:
+Give a binary string s, return the number of non-empty substrings that have the same number of 0's and 1's, and all the
+0's and all the 1's in these substrings are grouped consecutively.
+
+Example 1:
+Input: s = "00110011"
+Output: 6
+Explanation: There are 6 substrings that have equal number of consecutive 1's and 0's: "0011", "01", "1100", "10",
+"0011", and "01".
+Notice that some of these substrings repeat and are counted the number of times they occur.
+Also, "00110011" is not a valid substring because all the 0's (and 1's) are not grouped together.
+
+Method 1: Brute-Force
+1. Generate all possible substring and check which substring has equal number of 1's and 0's.
+
+Method 2: Auxiliary Array.
+1. Use 4 arrays, 2 for each 1's and 0's
+2. Two arrays are there for zero, so store count of 0's in both direction i.e. Forward and backward and same for 1's
+3. Traverse the array and check if you get same count in first 0's and 1's array and same for second array of each.
+
+Method 3: Efficient
+1. Use three pointers, say prev, mid and curr.
+2. Scan the string and do following:
+    i. If current character is not equal to previous then:
+        answer += min(curr - mid, mid - prev)
+        prev = mid
+        mid = curr
+3. Example:
+    P = 0, M = 0 and C will point to current scanned element
+    S = "0 0 0 1 1 0 0 1"
+         P     M   C        answer = (C - M, M - P) ==> answer = (5 - 3, 3 - 0) ==> 2
+
+   Note: For first mismatch, we will get 0 in answer as prev and mid are pointing to 0 index
+
+Implementation:
+class Solution {
+public:
+    int countBinarySubstrings(string s)
+    {
+        int answer = 0, prev = 0, mid = 0;
+
+        s += '$';
+        for(int i = 1; i < s.size(); i++)
+        {
+            if(s[i] != s[i - 1])
+            {
+                answer += min(i - mid, mid - prev);
+                prev = mid;
+                mid = i;
+            }
+        }
+
+        return answer;
+    }
+};
+*/

@@ -1,0 +1,74 @@
+/*
+Name: Reverse alternate nodes in Link List
+Statement:
+Given a linked list, you have to perform the following task:
+    1. Extract the alternative nodes starting from second node.
+    2. Reverse the extracted list.
+    3. Append the extracted list at the end of the original list.
+Example:
+Input:
+LinkedList = 10->4->9->1->3->5->9->4
+Output: 10 9 3 9 4 5 1 4
+
+Method 1: Cloning List
+1. Create two lists by creating new nodes.
+2. Reverse the second list and append it first list.
+
+Method 2: Pointer Manipulation
+1. Use Even/odd method to create two separate list from given list.
+2. Reverse the second list and append it first list.
+
+*/
+// Implementation:
+
+class Solution
+{
+    public:
+    void rearrange(struct Node *head)
+    {
+        struct Node *temp, *first, *temp1, *temp2, *back, *mid;
+        bool even = true;
+        temp = head;
+        first = head = NULL;
+
+        while(temp)
+        {
+            if(even)
+            {
+                if(head == NULL)
+                    head = temp1 = temp;
+                else
+                {
+                    temp1 -> next = temp;
+                    temp1 = temp;
+                }
+            }
+            else
+            {
+                if(first == NULL)
+                    first = temp2 = temp;
+                else
+                {
+                    temp2 -> next = temp;
+                    temp2 = temp;
+                }
+            }
+            temp = temp -> next;
+            even = even ? false : true;
+        }
+        temp1 -> next = NULL;
+        temp2 -> next = NULL;
+
+        temp = first;
+        back = NULL;
+        while(temp)
+        {
+            mid = temp;
+            temp = temp -> next;
+            mid -> next = back;
+            back = mid;
+        }
+        temp1 -> next = back;
+    }
+};
+

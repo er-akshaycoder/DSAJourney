@@ -1,0 +1,81 @@
+/*
+Title: Find in Mountain Array
+Statement:
+You may recall that an array arr is a mountain array if and only if:
+    arr.length >= 3 and There exists some i with 0 < i < arr.length - 1 such that:
+    arr[0] < arr[1] < ... < arr[i - 1] < arr[i] arr[i] > arr[i + 1] > ... > arr[arr.length - 1]
+
+Given a mountain array mountainArr, return the minimum index such that mountainArr.get(index) == target. If such an
+index does not exist, return -1.
+
+You cannot access the mountain array directly. You may only access the array using a MountainArray interface:
+MountainArray.get(k) returns the element of the array at index k (0-indexed).
+MountainArray.length() returns the length of the array.
+
+Submissions making more than 100 calls to MountainArray.get will be judged Wrong Answer. Also, any solutions that
+attempt to circumvent the judge will result in disqualification.
+
+Example 1:
+Input: array = [1,2,3,4,5,3,1], target = 3
+Output: 2
+
+1. Method: Binary Search
+    1. Find pivot element whose right and left side is smaller.
+    2. Now, left side will be in ascending order and right side will be in descending order.
+    3. Now, apply bs on both side.
+*/
+// Solution:
+class Solution {
+public:
+    int getPivot(MountainArray &mountainArr)
+    {
+        int high = mountainArr.length() - 1, low = 0;
+
+        while(low < high)
+        {
+            int mid = (low + high) / 2;
+            int middle = mountainArr.get(mid);
+
+            if(middle < mountainArr.get(mid + 1))           // Go right until min element encounters and same to go left
+                low = mid + 1;
+            else
+                high = mid - 1;
+        }
+
+        return low;
+    }
+    int binarySearch(int target, MountainArray &mountainArr, int low, int high, bool asc)
+    {
+        while(low <= high)
+        {
+            int mid = (low + high) / 2;
+            int middle = mountainArr.get(mid);
+
+            if(middle == target)
+                return mid;
+
+            if((asc && middle < target) || (!asc && middle > target))
+                low = mid + 1;
+            else
+                high = mid - 1;
+        }
+
+        return -1;
+    }
+    int findInMountainArray(int target, MountainArray &mountainArr)
+    {
+        int pivot = getPivot(mountainArr);          //return pivot;
+        int leftSide = binarySearch(target, mountainArr, 0, pivot, true);
+        int rightSide = binarySearch(target, mountainArr, pivot, mountainArr.length() - 1,  false);
+
+        if(leftSide != -1)
+            return leftSide;
+        if(rightSide != -1)
+            return rightSide;
+
+        return -1;
+    }
+};
+
+
+

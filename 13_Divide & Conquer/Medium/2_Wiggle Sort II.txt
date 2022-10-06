@@ -1,0 +1,46 @@
+/*
+Name: Wiggle Sort II
+Statement:
+Given an integer array nums, reorder it such that nums[0] < nums[1] > nums[2] < nums[3]....
+In-Short, sort a array in zig-zag order.
+
+Example:
+Input: nums = [1,5,1,1,6,4]
+Output: [1,6,1,5,1,4]
+Explanation: [1,4,1,5,1,6] is also accepted.
+
+1. Method: Odd-Even
+    1. Just check adjacent elements and swap based on its position if even or odd.
+    2. This Assumption is wrong here, array may contain duplicates elements, e.g 1 1 1 1 2 2 2 2
+
+2. Method: Sorting
+    1. Sort the array in ascending order.
+    2. Now, We cannot just arrange a list alternatively by taking one element from left and one from end.
+    3. Because, there may be chance of having same elements at middle. e.g. 1 2 2 3
+    4. So, just insert elements from right at odd position of answer array and once it done, then insert at even
+       position.
+    5. So our output will be 2 3 1 2
+*/
+// Solution
+class Solution {
+public:
+    void wiggleSort(vector<int>& nums)
+    {
+        int n = nums.size(), j = 0;
+        vector<int> temp(n, 0);
+
+        sort(nums.begin(), nums.end());
+        j = n - 1;
+        for(int i = 1; i < n; i += 2)
+        {
+            temp[i] = nums[j];
+            j -= 1;
+        }
+        for(int i = 0; i < n; i += 2)
+        {
+            temp[i] = nums[j];
+            j -= 1;
+        }
+        nums = temp;
+    }
+};

@@ -1,0 +1,49 @@
+/*
+Name: Flatten Binary Tree to Linked List
+Statement: [Read Description from  LC UI]
+Given the root of a binary tree, flatten the tree into a "linked list":
+    The "linked list" should use the same TreeNode class where the right child pointer points to the next node in the
+    list and the left child pointer is always null.
+    The "linked list" should be in the same order as a pre-order traversal of the binary tree.
+
+Example:
+Input: root = [1,2,5,3,4,null,6]
+Output: [1,null,2,null,3,null,4,null,5,null,6]
+
+1. Method: PreOrder Recursion
+    1. Take left Subtree into leftSubtree and right Subtree into rightSubtree pointer.
+    2. Now make Root's left null
+    3. If Left Subtree is not null, then make Root's right leftSubtree and point lastNode to leftSubtree.
+    4. Here, we required lastNode scanned node for appending right subtree.
+    5. If right Subtree is not null, then make lastNode's right leftSubtree and point lastNode to rightSubtree.
+
+*/
+// Solution
+class Solution {
+    TreeNode* lastNode = NULL;
+public:
+    void flatten(TreeNode* root)
+    {
+        if(!root)       return;
+
+        TreeNode* leftTree = root -> left;
+        TreeNode* rightTree = root -> right;
+
+        root -> left = NULL;
+        lastNode = root;
+
+        if(leftTree)
+        {
+            root -> right = leftTree;
+            lastNode = leftTree;
+            flatten(leftTree);
+        }
+
+        if(rightTree)
+        {
+            lastNode -> right = rightTree;
+            lastNode = rightTree;
+            flatten(rightTree);
+        }
+    }
+};

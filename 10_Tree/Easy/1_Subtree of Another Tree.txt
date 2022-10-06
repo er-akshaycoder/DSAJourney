@@ -1,0 +1,65 @@
+/*
+Name: Subtree of Another Tree
+Statement:
+Given the roots of two binary trees root and subRoot, return true if there is a subtree of root with the same structure
+and node values of subRoot and false otherwise.
+
+A subtree of a binary tree tree is a tree that consists of a node in tree and all of this node's descendants. The tree
+tree could also be considered as a subtree of itself.
+
+Example 1:
+Input: root = [3,4,5,1,2], subRoot = [4,1,2]
+Output: true
+
+1. Method: Two Traversals
+    1. Compare any two traversal of main tree and subtree
+
+Note:
+ 1. If Subtree in main tree has few additional nodes and given subtree doesn't have, then answer is false as complete
+    subtree need to be available
+ 2. To handle this condition, we have to insert special character when root reaches to NULL
+
+*/
+// Solution:
+class Solution {
+public:
+    void getInorder(TreeNode* root, vector<int> &container)
+    {
+        if(!root)
+        {
+            container.push_back(INT_MIN);
+            return;
+        }
+        getInorder(root -> left, container);
+        container.push_back(root -> val);
+        getInorder(root -> right, container);
+    }
+    void getPreorder(TreeNode* root, vector<int> &container)
+    {
+        if(!root)
+        {
+            container.push_back(INT_MIN);
+            return;
+        }
+        container.push_back(root -> val);
+        getInorder(root -> left, container);
+        getInorder(root -> right, container);
+    }
+    bool isSubtree(TreeNode* root, TreeNode* subRoot)
+    {
+        vector<int> inOrderTree1;
+        vector<int> preOrderTree1;
+        vector<int> inOrderTree2;
+        vector<int> preOrderTree2;
+
+        getInorder(root, inOrderTree1);
+        getInorder(subRoot, inOrderTree2);
+
+        getPreorder(root, preOrderTree1);
+        getPreorder(subRoot, preOrderTree2);
+
+       return includes(inOrderTree1.begin(), inOrderTree1.end(), inOrderTree2.begin(), inOrderTree2.end()) &&
+       includes(preOrderTree1.begin(), preOrderTree1.end(), preOrderTree2.begin(), preOrderTree2.end());
+    }
+};
+

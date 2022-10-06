@@ -1,0 +1,64 @@
+/*
+Name: Find median of BST
+Statement:
+Given a Binary Search Tree of size N, find the Median of its Node values.
+
+Example:
+Input:
+       6
+     /   \
+   3      8
+ /  \    /  \
+1    4  7    9
+
+Output: 6
+Explanation: Inorder of Given BST will be:
+1, 3, 4, 6, 7, 8, 9. So, here median will 6.
+
+1. Method: Inorder and Count
+    1. Take count of total nodes in BST.
+    2. Perform inorder traversal again and go till (n + 1) - (n / 2) and also preserve last node.
+
+*/
+// Solution:
+int getNodesCount(struct Node *root)
+{
+    if(!root)       return 0;
+
+    int leftSubtree = getNodesCount(root -> left);
+    int rightSubtree = getNodesCount(root -> right);
+
+    return leftSubtree + 1 + rightSubtree;
+}
+float findMedian(struct Node *root)
+{
+      float answer = 0.0, next;
+      int target, count, cnt = 0;
+      stack<struct Node*> container;
+
+      count = getNodesCount(root);
+      target = (count + 1) - (count / 2);
+
+      while(!container.empty() || root)
+      {
+          while(root)
+          {
+              container.push(root);
+              root = root -> left;
+          }
+          cnt += 1;
+          if(target == cnt)
+            break;
+
+          root = container.top();
+          container.pop();
+
+          answer = root -> data;
+          root = root -> right;
+      }
+      if(count % 2)
+        return answer;
+
+      next = container.top() -> data;
+      return (answer + next) / 2;
+}

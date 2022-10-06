@@ -1,0 +1,62 @@
+/*
+Name: Swap Kth nodes from ends
+Statement:
+Given a singly linked list of size N, and an integer K. You need to swap the Kth node from the beginning and 
+Kth node from the end of the linked list. Swap the nodes through the links. Do not change the content of the nodes.
+
+Note: The generated output will be 1 if you are able to complete your task. 
+
+Example:
+Input:
+N = 4,  K = 1
+value[] = {1,2,3,4}
+Output: 1
+
+N = 5,  K = 7
+value[] = {1,2,3,4,5}
+Output: 1
+
+Method 1: Straight forward:
+1. Point the both first and second pointers on their correct place with their previous pointers.
+2. Here we need to handle special some corner cases as per below:
+	1. If first pointer or second pointer is pointing to head node.
+	2. If second pointer-ed node is next to first pointer-ed node.
+
+*/
+// Implementation:
+Node *swapkthnode(Node* head, int num, int K)
+{
+    if(K > num)
+        return head;
+    
+    Node *temp, *prev1, *prev2, *first, *second, *extra;
+    int i = K, j = num - K + 1;
+    
+    for(first = head; first && --i; first = first -> next)
+        prev1 = first;
+        
+    for(second = head; second && j > 1; second = second -> next, j--)
+        prev2 = second;
+    
+    if(first == head || second == head)					// First/second pointer points to first
+    {  
+        extra = first == head ? second : first;
+        prev2 = first == head ? prev2 : prev1;
+        temp = head -> next;
+        head -> next = NULL;
+        prev2 -> next = head;
+        extra -> next = temp;
+        return extra;
+    }
+    //cout<<first -> data<<prev2 -> data;
+    //return head;
+    prev1 -> next = second;
+    temp = second -> next;
+    second -> next = first != prev2 ? first -> next :first;		// second pointed node is next to first pointed
+    first -> next = temp;
+    if(first == prev2)  return head;
+    prev2 -> next = first;
+    
+    
+    return head;
+}

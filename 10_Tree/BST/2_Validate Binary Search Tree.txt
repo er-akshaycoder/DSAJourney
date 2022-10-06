@@ -1,0 +1,35 @@
+/*
+Name: Validate Binary Search Tree
+Statement:
+Given the root of a binary tree, determine if it is a valid binary search tree (BST).
+
+Example:
+Input: root = [5,1,4,null,null,3,6]
+Output: false
+Explanation: The root node's value is 5 but its right child's value is 4.
+
+1. Method: Two pointers
+    1. For any node, maintain two pointers, minvalue and maxValue for comparison.
+    2. For left Subtree check, just change maxValue to root's value as for further node, root value will be maxValue.
+    3. For Right Subtree check, just change minValue to root's value as for further , root value will be minValue.
+    4. Note: Corner cases will be covered here.
+
+*/
+// Solution:
+class Solution {
+public:
+    int validateBST(TreeNode* root, long minValue, long maxValue)
+    {
+        if(!root)       return true;
+
+        if(!(minValue < root -> val && root -> val < maxValue))
+            return false;
+
+        return validateBST(root -> left, minValue, root -> val) && validateBST(root -> right, root -> val, maxValue);
+    }
+    bool isValidBST(TreeNode* root)
+    {
+        return validateBST(root, LONG_MIN, LONG_MAX);
+    }
+};
+//leetcode submit region end(Prohibit modification and deletion)

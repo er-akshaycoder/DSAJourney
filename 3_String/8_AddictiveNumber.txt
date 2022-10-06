@@ -1,0 +1,83 @@
+/*
+Name: Addictive Number
+Statement:
+    An additive number is a string whose digits can form an additive sequence. A valid additive sequence should contain
+    at least three numbers. Except for the first two numbers, each subsequent number in the sequence must be the sum of
+    the preceding two.
+    Given a string containing only digits, return true if it is an additive number or false otherwise.
+    Note: Numbers in the additive sequence cannot have leading zeros, so sequence 1 , 2, 03 or 1, 02, 3 is invalid.
+    Example 1:
+    Input: "112358"
+    Output: true
+    Explanation:
+    The digits can form an additive sequence: 1, 1, 2, 3, 5, 8.
+    1 + 1 = 2, 1 + 2 = 3, 2 + 3 = 5, 3 + 5 = 8
+
+Method 1: Native
+    1. Use 3 nested loops, first 2 for first and second number and third loop for remaining sequence.
+    2. Also, we need to perform addition operation in string format and not in integer.
+
+Implementation:
+class Solution {
+public:
+    string addString(string s1, string s2)
+    {
+        int n = max(s1.size(), s2.size());
+        string answer;
+        int carry = 0;
+
+        for(int i = 1; i <= n; i++)
+        {
+            int digit1 = i <= s1.size() ? s1[s1.size() - i] - '0' : 0;
+            int digit2 = i <= s2.size() ? s2[s2.size() - i] - '0' : 0;
+            int result = digit1 + digit2 + carry;
+            int rem = result % 10 ;
+            carry = result / 10;
+            answer.push_back('0' + rem);
+        }
+        if(carry)
+            answer.push_back('0' + carry);
+        reverse(answer.begin(), answer.end());
+
+        return answer;
+    }
+    bool isAdditiveNumber(string num)
+    {
+        int n = num.size();
+
+        for(int i = 1; i < n - 1; i++)
+        {
+            string x = num.substr(0, i);
+            for(int j = i + 1; j < n; j++)
+            {
+                string y = num.substr(i, j - i);
+                int start = j;
+
+                for(int k = j + 1; k <= n; k++)
+                {
+                    string z = num.substr(start, k - start);
+                    if((x[0] == '0' && x.size()!= 1) || (y[0] == '0' && y.size()!= 1) || (z[0] == '0' && z.size()!= 1))
+                        break;
+                    string result = addString(x, y);
+                    if(result == z)
+                    {
+                        cout<<x<<">"<<y<<">"<<z<<":";
+                        if(k < n)
+                        {
+                            start = k;
+                            x = y;
+                            y = z;
+                        }
+                        else
+                            return true;
+
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+};
+
+*/

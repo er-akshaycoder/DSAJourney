@@ -1,0 +1,40 @@
+/*
+Name : Degree of an Array
+Statement: Given a non-empty array of non-negative integers nums, the degree of this array is defined as the maximum
+frequency of any one of its elements.
+*/
+
+class Solution {
+public:
+    int findShortestSubArray(vector<int>& nums)
+    {
+        unordered_map<int, int> lmap;
+        unordered_map<int, int> rmap;
+        unordered_map<int, int> cmap;
+        int n = nums.size(), frequency = 0;
+
+        for(int i = 0; i < n; i++)
+        {
+            int count = cmap.find(nums[i]) == cmap.end() ? 0 : cmap.at(nums[i]);
+
+            if(count)
+                rmap[nums[i]] = i;
+            else
+                lmap.insert({nums[i], i});
+
+            cmap[nums[i]] = count + 1;
+
+            if(frequency < count + 1)
+                frequency = count + 1;
+        }
+        if(frequency == 1)
+            return 1;
+        int minLen = n - 1;
+        for(int i = i = 0; i < n; i++)
+        {
+            if(frequency == cmap.at(nums[i]))
+                minLen = min(minLen, rmap.at(nums[i]) - lmap.at(nums[i]));
+        }
+        return minLen + 1;
+    }
+};

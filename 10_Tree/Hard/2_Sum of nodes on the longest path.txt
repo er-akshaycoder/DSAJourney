@@ -1,0 +1,52 @@
+/*
+Name: Sum of nodes on the longest path
+Statement:
+Given a binary tree containing n nodes. The problem is to find the sum of all nodes on the longest path from root to leaf node. If two or more paths compete for the longest path, then the path having maximum sum of nodes is being considered.
+
+Example:
+Input : Binary tree:
+			4        
+		   / \       
+		  2   5      
+		 / \ / \     
+		7  1 2  3    
+		  /
+		 6
+Output:
+sum = (4 + 2 + 1 + 6) = 13
+
+1. Method: Pre-order Recursion
+	1.  Recursively find the length and sum of nodes of each root to leaf path and accordingly update the maximum sum.
+	
+*/
+// Solution:
+class Solution
+{
+public:
+    
+    void findMaxSum(Node *root, int *maxSum, int *maxRoute, int sum, int route)
+    {
+        if(!root)
+        {
+            if(*maxRoute < route)
+            {
+                *maxRoute = route;
+                *maxSum = sum;
+            }
+            if(*maxRoute == route && *maxSum < sum)
+                *maxSum = sum;
+            return;
+        }
+        findMaxSum(root -> left, maxSum, maxRoute, sum + root -> data, route + 1);
+        findMaxSum(root -> right, maxSum, maxRoute, sum + root -> data, route + 1);
+    }
+    
+    int sumOfLongRootToLeafPath(Node *root)
+    {
+        int maxSum = INT_MIN, maxRoute = 0, currSum;
+        
+        findMaxSum(root, &maxSum, &maxRoute, 0, 0);
+        
+        return maxSum;
+    }
+};

@@ -1,0 +1,30 @@
+/*
+Name: Find largest subtree sum in a tree
+Statement:
+Given a binary tree, task is to find subtree with maximum sum in tree.
+Examples:
+Input :       1
+            /    \
+          -2      3
+          / \    /  \
+         4   5  -10   2
+Output : 7
+
+1. Method: Post-Order Recursion
+    1. Take Sum of left subtree, right subtree and root
+    2. Use answer variable to track maximum sum.
+
+*/
+// Solution:
+int findLargestSubtreeSumUtil(Node* root, int& ans)
+{
+    if (!root)    return 0;
+
+    int leftSubtree = findLargestSubtreeSumUtil(root->left, ans);
+    int rightSubtree = findLargestSubtreeSumUtil(root-> right, ans);
+    int currSum = root->key + leftSubtree + rightSubtree;
+
+    ans = max(ans, currSum);
+
+    return currSum;
+}

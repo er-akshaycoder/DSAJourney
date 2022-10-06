@@ -1,0 +1,108 @@
+/*
+Name: Remove K Digits
+Statement:
+Given string num representing a non-negative integer num, and an integer k, return the smallest possible integer after
+removing k digits from num.
+
+Example 1:
+Input: num = "1432219", k = 3
+Output: "1219"
+
+Example 2:
+Input: num = "10200", k = 1
+Output: "200"
+
+1. Method: Brute-Force/Backtracking
+    1. Check removing each number and check for Minimum string.
+    Solution:
+        class Solution {
+        public:
+            string getMin(string num, int k)
+            {
+                if(num.size() <= k)
+                    return "0";
+                if(k <= 0)
+                    return num;
+
+                string minString = num;
+
+                for(int i = 0; i < num.size(); i++)
+                {
+                    char temp = num[i];
+                    num.erase(i,1);
+                    string currMin = getMin(num, k - 1);
+                    minString = min(minString, currMin);
+                    num.insert(i, string(1,temp));
+                }
+
+                return minString;
+            }
+            string removeKdigits(string num, int k)
+            {
+                string answer = getMin(num, k);
+
+                if(answer.size() == 1)
+                    return answer;
+                for(int i = 0; i < answer.size() - 1; i++)
+                {
+                    if(answer[0] == '0')
+                    {
+                        answer.erase(0,1);
+                        i--;
+                    }
+                }
+                return answer;
+            }
+        };
+2. Method: Stack
+    1. To make number smaller, we have to keep its digit in ascending order.
+    2. So, we can use this assumption to remove k character and that means we will try to keep all digits in ascending
+       order as possible as we can.
+    3. If any number is trying to break that assumption, then will just remove that element.
+    4. I.e. If current digit is less than previous, then here we have to discard one from them.
+    5. We will remove previous (greater) element as we want smaller target element and will try to remove previous of
+       previous if that violets the assumption.
+    6. To avoid leading 0 in answer, will check if stack is empty or not if 0 is current character.
+*/
+// Solution:
+class Solution {
+public:
+
+    string removeKdigits(string num, int k)
+    {
+        if(k >= num.size())
+            return "0";
+
+        stack<char> stackHolder;
+
+        for(int i = 0; i < num.size(); i++)
+        {
+            while(!stackHolder.empty() && stackHolder.top() > num[i] && k)
+            {
+                stackHolder.pop();
+                k -= 1;
+            }
+
+            if(!(stackHolder.empty() && num[i] == '0'))
+                stackHolder.push(num[i]);
+        }
+        while(!stackHolder.empty() && k > 0)
+        {
+            stackHolder.pop();
+            k--;
+        }
+
+        int i = 0, n = stackHolder.size();
+        string answer(stackHolder.size(), '$');
+        if(!n)
+            return "0";
+        while(!stackHolder.empty())
+        {
+            answer[n - i - 1] = stackHolder.top();
+            stackHolder.pop();
+            i++;
+        }
+
+        return answer;
+    }
+};

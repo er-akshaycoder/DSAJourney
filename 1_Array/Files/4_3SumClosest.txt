@@ -1,0 +1,47 @@
+/*
+Name : 3Sum Closest
+Statement: Given an integer array nums of length n and an integer target, find three integers in nums such that the sum
+is closest to target.
+Time Complexity: 0(N^2Logn)
+Note: This is not an optimal solution, but this method is very important.
+      Optimal solution will be based on 2 pointer, and it's complexity will be 0(N^2);
+*/
+
+class Solution {
+public:
+    int threeSumClosest(vector<int>& nums, int target)
+    {
+        int n = nums.size(), closest, total;
+
+        sort(nums.begin(), nums.end());
+
+        total = nums[0] + nums[1] + nums[2];
+        closest = abs(target - total);
+
+        for(int i = 0; i < n; i++)
+        {
+            for(int j = i + 1; j < n; j++)
+            {
+                int sum = nums[i] + nums[j];
+                int l = j + 1, r = n - 1;
+
+                while(l <= r)
+                {
+                    int mid = (l + r)/2;
+
+                    if(abs(target -(sum + nums[mid])) < closest)
+                    {
+                        closest = abs(target -(sum + nums[mid]));
+                        total = sum + nums[mid];
+                    }
+
+                    if(target > (sum + nums[mid]))
+                        l = mid + 1;
+                    else
+                        r = mid - 1;
+                }
+            }
+        }
+        return total;
+    }
+};

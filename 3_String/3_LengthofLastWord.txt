@@ -1,0 +1,40 @@
+/*
+Name: Length of Last Word
+Statement:
+Given a string s consisting of some words separated by some number of spaces, return the length of the last word in the
+string. A word is a maximal substring consisting of non-space characters only.
+Example 1:
+Input: s = "Hello World"
+Output: 5
+Explanation: The last word is "World" with length 5.
+
+Example 2:
+Input: s = "   fly me   to   the moon  "
+Output: 4
+
+Code:
+class Solution {
+public:
+    int lengthOfLastWord(string s)
+    {
+        bool flag = false;
+        int j = s.size();
+
+        for(int i = s.size() - 1; i >= 0; i--)
+        {
+            if(s[i] == ' ')
+            {
+                if(flag == true)
+                    return j - (i + 1);
+                else
+                    j = i;
+            }
+            else
+            {
+                flag = true;
+            }
+        }
+        return j;
+    }
+};
+*/

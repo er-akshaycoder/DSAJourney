@@ -1,0 +1,69 @@
+/*
+Name: Count Inversions
+
+Example:
+Input: N = 5, arr[] = {2, 4, 1, 3, 5}
+Output: 3
+Explanation: The sequence 2, 4, 1, 3, 5 has three inversions (2, 1), (4, 1), (4, 3).
+
+1. Method: Merge Sort:
+    1. While merging two lists, count inversions.
+
+*/
+// Solution
+class Solution{
+  public:
+    void splitArray(long long arr[], int low, int high, long long int *answer)
+    {
+        int count = 0;
+
+        if(low < high)
+        {
+            int mid = (low + high) / 2;
+            splitArray(arr, low, mid, answer);
+    		splitArray(arr, mid + 1, high, answer);
+
+    		count = mergeList(arr, low, mid, high);
+        }
+        *answer += count;
+    }
+
+	int mergeList(long long arr[], int low, int mid, int high)
+	{
+		int i = low, j = mid + 1, k = low;
+		int temp[(high - low) + 1];
+		long long int count = 0;
+
+		while(i <= mid && j <= high)
+		{
+			if(arr[i] > arr[j])
+			{
+				count += (mid - i) + 1;
+				temp[k++] = arr[j++];
+			}
+			else
+				temp[k++] = arr[i++];
+		}
+
+		while(i <= mid)
+			temp[k++] = arr[i++];
+
+		while(j <= high)
+			temp[k++] = arr[j++];
+
+		for(int index = low; index <= high; index++)
+			arr[index] = temp[index];
+
+		return count;
+	}
+
+    long long int inversionCount(long long arr[], long long N)
+    {
+        long long int answer = 0;
+
+        splitArray(arr, 0, N - 1, &answer);
+
+        return answer;
+    }
+
+};

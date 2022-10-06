@@ -1,0 +1,90 @@
+/*
+Name: Count Collisions on a Road
+Statement: [Read problem statement from YB https://www.youtube.com/watch?v=uFWq-OJj-Ak]
+Example 1:
+Input: directions = "RLRSLL"
+Output: 5
+Explanation:
+The collisions that will happen on the road are:
+- Cars 0 and 1 will collide with each other. Since they are moving in opposite directions, the number of collisions
+becomes 0 + 2 = 2.
+- Cars 2 and 3 will collide with each other. Since car 3 is stationary, the number of collisions becomes 2 + 1 = 3.
+- Cars 3 and 4 will collide with each other. Since car 3 is stationary, the number of collisions becomes 3 + 1 = 4.
+- Cars 4 and 5 will collide with each other. After car 4 collides with car 3, it will stay at the point of collision
+and get hit by car 5. The number of collisions becomes 4 + 1 = 5.
+Thus, the total number of collisions that will happen on the road is 5.
+
+Example 2:
+Input: directions = "LLRR"
+Output: 0
+Explanation:
+No cars will collide with each other. Thus, the total number of collisions that
+will happen on the road is 0.
+
+1. Method 1: Brute-Force
+  i. Scan the string from left to right and read two characters at a time in a pair.
+ ii. If formed pair from any RS, SL, RL then increment the count and replace collide characters by SS.
+iii. Once scanning completed, Repeat these step until no pair from above-mentioned pairs.
+
+T = O(N * Itr)
+
+2. Method 2: Stack
+  i. Scan the string and push if the stack is empty or current char and top's character not matching any of any RS, SL,
+     RL pairs.
+ ii. Else increment the answer count and replace stack top by 'S' and push 'S' onto stack as collision occurred.
+iii. Once string scanned, just pop the two entries from stack and check if they match with SL and RS, if yes then
+     increment the count and push 'S' onto stack, repeat this step until stack has single or none entries
+
+T = O(N), S = O(N)
+*/
+// Solution:
+class Solution {
+public:
+    int countCollisions(string directions)
+    {
+        int answer = 0;
+        stack<char> stackContainer;
+
+        for(int i = 0; i < directions.size(); i++)
+        {
+            int cnt = 0;
+            if(!stackContainer.empty())
+            {
+                string temp(1, stackContainer.top());
+                temp += directions[i];
+                if(temp == "RL")
+                    cnt = 2;
+                else
+                {
+                    if(temp == "RS" || temp == "SL")
+                        cnt = 1;
+                }
+            }
+            if(cnt == 0)
+                stackContainer.push(directions[i]);
+            else
+            {
+                answer += cnt;
+                stackContainer.pop();
+                stackContainer.push('S');
+                stackContainer.push('S');
+            }
+        }
+
+        while(stackContainer.size() >= 2)
+        {
+            string temp(1, stackContainer.top());
+            stackContainer.pop();
+            temp += stackContainer.top();
+
+            if(temp == "SR" || temp == "LS")
+            {
+                answer += 1;
+                stackContainer.pop();
+                stackContainer.push('S');
+            }
+        }
+
+        return answer;
+    }
+};

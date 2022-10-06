@@ -1,0 +1,51 @@
+/*
+Name: String Without AAA or BBB
+Statement:
+Given two integers a and b, return any string s such that:
+    s has length a + b and contains exactly a 'a' letters, and exactly b 'b' letters.
+The substring 'aaa' does not occur in s, and
+The substring 'bbb' does not occur in s.
+
+Example 1:
+Input: a = 1, b = 2
+Output: "abb"
+Explanation: "abb", "bab" and "bba" are all correct answers.
+
+Example 2:
+Input: a = 4, b = 1
+Output: "aabaa"
+
+1. Method: Greedy
+    1. Handle adding a and b into answer string in different blocks.
+    2. If a > b and cnt1 < 2 then add a else add b
+    3. Need to handle case if a = 1 and b = 4, so have to include cnt2 >= 2 into first condtion.
+*/
+// Solution:
+class Solution {
+public:
+    string strWithout3a3b(int a, int b)
+    {
+        string answer;
+        int n = a + b, cnt1 = 0, cnt2 = 0;
+
+        for(int i = 0; i < n; i++)
+        {
+            if((cnt1 < 2 && a > b) || cnt2 >= 2)
+            {
+                answer += 'a';
+                cnt1 += 1;
+                cnt2 = 0;
+                a -= 1;
+            }
+            else
+            {
+                answer += 'b';
+                cnt2 += 1;
+                cnt1 = 0;
+                b -= 1;
+            }
+        }
+
+        return answer;
+    }
+};

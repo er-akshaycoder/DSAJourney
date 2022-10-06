@@ -1,0 +1,51 @@
+/*
+Name: Sort Characters By Frequency
+Statement:
+Given a string s, sort it in decreasing order based on the frequency of the characters. The frequency of a character is
+the number of times it appears in the string.
+Return the sorted string. If there are multiple answers, return any of them.
+
+Example 1:
+Input: s = "tree"
+Output: "eert"
+Explanation: 'e' appears twice while 'r' and 't' both appear once.
+So 'e' must appear before both 'r' and 't'. Therefore "eetr" is also a valid answer.
+
+1. Method: Counting Sorting
+    1. Build a hash table for characters' occurrences.
+    2. As count of any character will not exceed n, so we can use 2-d array of char and count will be its index
+    3. On count th index, we will insert all characters that has index as occurrences.
+    4. Now, will just iterate 2d vector in reverse order to get our targeted answer
+*/
+// Solution
+class Solution {
+public:
+    string frequencySort(string s)
+    {
+        int frequency[128] = {0};
+        vector<vector<char>> bucket(s.size() + 1);
+        string answer;
+
+        for(char ch : s)
+            frequency[ch] += 1;
+
+        for(int i = 0; i < 128; i++)
+        {
+            if(frequency[i] > 0)
+                bucket[frequency[i]].push_back((char)i);
+        }
+
+        for(int i = s.size(); i >= 0; i--)
+        {
+            vector<char> temp = bucket[i];
+            for(char ch: temp)
+            {
+                int j = i;
+                while(j--)
+                    answer.push_back(ch);
+            }
+        }
+
+        return answer;
+    }
+};

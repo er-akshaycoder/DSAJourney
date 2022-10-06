@@ -1,0 +1,85 @@
+/*
+Name: Min Stack
+Statement:
+Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+Implement the MinStack class:
+MinStack() initializes the stack object.
+void push(int val) pushes the element val onto the stack.
+void pop() removes the element on the top of the stack.
+int top() gets the top element of the stack.
+int getMin() retrieves the minimum element in the stack.
+
+You must implement a solution with O(1) time complexity for each function.
+
+Example 1:
+Input
+["MinStack","push","push","push","getMin","pop","top","getMin"]
+[[],[-2],[0],[-3],[],[],[],[]]
+
+Output
+[null,null,null,null,-3,null,0,-2]
+
+1. Method 1: Two Stack
+1. One stack to represent actual keys and another for representing min till ith entry.
+
+
+2. Method 1: Stack
+1. As discussed by RBR, we push difference of old minimum and new minimum element by below formulas.
+    Diff = New - Old
+    Old = New - Diff
+2. But, above formulas not handling condition when old min and new min are negative.
+   Example: -5, -8
+   i. Here, if we calculate difference, then diff would be greater than new min and this will violet our assumption.
+   ii. So, we have to find out formula to get lesser difference irrespective of the signs.
+   iii. Below formulas works:
+    Diff = 2 * New - Old
+    Old = 2 * New - Diff
+3. With above formulas, it always makes sure that difference will be always lesser than new min element.
+
+*/
+// Solution:
+class MinStack
+{
+    stack<long> stackContainer;
+    long currentMin = -1;
+    public:
+        MinStack() {
+
+        }
+
+        void push(long val)
+        {
+            if(stackContainer.empty() || val >= currentMin)
+            {
+                if(stackContainer.empty())
+                    currentMin = val;
+                stackContainer.push(val);
+            }
+            else
+            {
+                long insertKey = 2 * val - currentMin;
+                stackContainer.push(insertKey);
+                currentMin = val;
+            }
+        }
+
+        void pop()
+        {
+            if(currentMin > stackContainer.top())
+                currentMin = 2 * currentMin - stackContainer.top();
+
+            stackContainer.pop();
+        }
+
+        int top()
+        {
+            if(currentMin > stackContainer.top())
+                return currentMin;
+            return stackContainer.top();
+        }
+
+        int getMin()
+        {
+            return currentMin;
+        }
+};

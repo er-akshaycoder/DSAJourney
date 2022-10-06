@@ -1,0 +1,61 @@
+/*
+Name: Avoid Flood in The City
+Statement:
+Your country has an infinite number of lakes. Initially, all the lakes are empty, but when it rains over the nth
+lake, the nth lake becomes full of water. If it rains over a lake that is full of water, there will be a flood.
+Your goal is to avoid floods in any lake.
+Given an integer array rains where:
+    rains[i] > 0 means there will be rains over the rains[i] lake.
+    rains[i] == 0 means there are no rains this day and you can choose one lake this day and dry it.
+
+Return an array ans where:
+
+ans.length == rains.length
+ans[i] == -1 if rains[i] > 0.
+ans[i] is the lake you choose to dry in the ith day if rains[i] == 0.
+
+If there are multiple valid answers return any of them. If it is impossible to avoid flood return an empty array.
+
+Notice that if you chose to dry a full lake, it becomes empty, but if you chose to dry an empty lake, nothing changes.
+
+1. Method: Hash Table and Binary Search
+    1. If the rain is raining on same day again, just check 0 from last rained index.
+    2. Here, we need to take immediate 0 from last rained index because next on day, it may rain our 0 will not save
+       that day as we have taken right-handed 0.
+    3. To get the index of 0 from last rained, we will use set and we can perform binary search.
+
+*/
+// Solution:
+class Solution {
+public:
+    vector<int> avoidFlood(vector<int>& rains)
+    {
+        unordered_map<int, int> umap;
+        vector<int> answer(rains.size(), 1);
+        set<int> container;
+
+        for(int i = 0; i < rains.size(); i++)
+        {
+            if(rains[i] != 0)
+            {
+                if(umap.find(rains[i]) != umap.end())
+                {
+                    int j = umap[rains[i]];
+                    auto it = container.upper_bound(j);
+                    if(it == container.end())
+                        return {};
+                    answer[*it] = rains[i];
+                    container.erase(it);
+                    umap.erase(rains[i]);
+                }
+                answer[i] = -1;
+                umap.insert({rains[i], i});
+            }
+            else
+                container.insert(i);
+        }
+
+        return answer;
+    }
+};
+

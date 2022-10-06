@@ -1,0 +1,49 @@
+/*
+Name: Delete N nodes after M nodes
+Statement: Given a linked list, delete N nodes after skipping M nodes of a linked list until the last of the linked
+list.
+Example:
+Input:
+M N
+2 1
+9 1 3 5 9 4 10 1
+Output: 9 1 5 9 10 1
+
+Method 1: Naive
+1. Start scanning list and maintain previous pointer, when node counter reaches to M do following:
+2. Skip further N nodes and assign (N + 1)th node to next of previous node.
+
+*/
+//Implementation:
+class Solution
+{
+    public:
+    void linkdelete(struct Node  *head, int M, int N)
+    {
+        struct Node  *temp, *prev;
+        int i = 0;
+        temp = head;
+
+        while(temp)
+        {
+            if(i == M)
+            {
+                int j = N;
+                while(temp && j--)
+                    temp = temp -> next;
+
+                prev -> next = temp;
+                if(temp == NULL)
+                    break;
+                i = 0;
+            }
+            else
+            {
+                i += 1;
+                prev = temp;
+                temp = temp -> next;
+            }
+
+        }
+    }
+};

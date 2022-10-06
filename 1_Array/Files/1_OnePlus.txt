@@ -1,0 +1,26 @@
+/*
+Name : Plus One
+Statement: You are given a large integer represented as an integer array digits, where each digits[i] is
+the ith digit of the integer. The digits are ordered from most significant to least significant in left-
+to-right order. The large integer does not contain any leading 0's.
+*/
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits)
+    {
+        int carry = 1, result;
+        for(int i = digits.size() - 1; i >= 0; i++)
+        {
+            result = digits[i] + carry;
+            digits[i] = result % 10;
+            carry = result / 10;
+
+            if(!carry)
+                break;
+        }
+        if(carry)
+            digits.insert(digits.begin(), carry);
+
+        return digits;
+    }
+};

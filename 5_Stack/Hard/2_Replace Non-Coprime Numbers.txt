@@ -1,0 +1,74 @@
+/*
+Name: Replace Non-Coprime Numbers in Array
+Statement:
+You are given an array of integers nums. Perform the following steps:
+    Find any two adjacent numbers in nums that are non-coprime.
+    If no such numbers are found, stop the process.
+    Otherwise, delete the two numbers and replace them with their LCM (Least Common Multiple).
+    Repeat this process as long as you keep finding two adjacent non-coprime numbers.
+Return the final modified array. It can be shown that replacing adjacent non- coprime numbers in any arbitrary order
+will lead to the same result.
+The test cases are generated such that the values in the final array are less than or equal to 10⁸.
+Two values x and y are non-coprime if GCD(x, y) > 1 where GCD(x, y) is the Greatest Common Divisor of x and y.
+
+1. Example:
+Input: nums = [6,4,3,2,7,6,2]
+Output: [12,7,6]
+Explanation:
+- (6, 4) are non-coprime with LCM(6, 4) = 12. Now, nums = [12,3,2,7,6,2].
+- (12, 3) are non-coprime with LCM(12, 3) = 12. Now, nums = [12,2,7,6,2].
+- (12, 2) are non-coprime with LCM(12, 2) = 12. Now, nums = [12,7,6,2].
+- (6, 2) are non-coprime with LCM(6, 2) = 6. Now, nums = [12,7,6].
+There are no more adjacent non-coprime numbers in nums. Thus, the final modified array is [12,7,6].
+Note that there are other ways to obtain the same resultant array.
+
+1. Method: Stack
+    1. Check if current element and top's entry are coprime, if not then just push their LCM after popping a previous
+       top.
+    2. Again check if last calculated and stack 2nd last entry are co-prime or not, if yes then perform first step.
+    3. If Current element is co-prime, just push it ino a stack.
+*/
+// Solution:
+class Solution {
+public:
+    long getGcd(long x, long y)
+    {
+        if(y == 0)
+            return x;
+
+        return getGcd(y, x % y);
+    }
+    long getLCM(long x, long y)
+    {
+        return (x * y) / getGcd(x, y);
+    }
+    vector<int> replaceNonCoprimes(vector<int>& nums)
+    {
+        stack<long> stackHolder;
+
+        for(int i = 0; i < nums.size(); i++)
+        {
+            long x = nums[i];
+            while(!stackHolder.empty() && getGcd(x, stackHolder.top()) != 1)
+            {
+                x = getLCM(x, stackHolder.top());
+
+                stackHolder.pop();
+            }
+
+            stackHolder.push(x);
+        }
+        int i = stackHolder.size() - 1;
+        vector<int> answer(stackHolder.size(), 0);
+        while(!stackHolder.empty())
+        {
+            answer[i] = stackHolder.top();
+            i -= 1;
+            stackHolder.pop();
+        }
+        return answer;
+    }
+};
+
+// Math Formula, a * b = LCM(a, b) * GCD(a, b)
+// For Gcd, calculation, check gfg solution

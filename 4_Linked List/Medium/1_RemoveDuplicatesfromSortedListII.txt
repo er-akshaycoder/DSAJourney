@@ -1,0 +1,59 @@
+/*
+Name: Remove duplicates from sorted list
+Statement:
+Given the head of a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers
+from the original list. Return the linked list sorted as well.
+Example 1:
+Input: head = [1,2,3,3,4,4,5]
+Output: [1,2,5]
+Example 2:
+Input: head = [1,1,1,2,3]
+Output: [2,3]
+
+Method 1: Efficient(Two Pointers)
+1. Assign head to prev pointer
+2. Start scanning list from next elements onward, assign current node to mid and do following:
+3. if prev->data == curr->data, go until you find mismatch
+4. If Mid == temp i.e. No duplicates for prev, add prev into output list.
+5. Assign temp to prev
+5. Need to handle corner cases when temp is pointing to last node.
+*/
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head)
+    {
+        if(head == NULL || head -> next == NULL)
+            return head;
+        ListNode *temp, *prev, *first, *temp1, *mid;
+        bool flag = true;
+        first = NULL;
+        prev = head;
+
+        //To Handle corner case
+        for(temp = head; temp->next != NULL; temp = temp->next);
+        temp->next = new ListNode(INT_MIN);
+
+        for(temp = head->next; temp!= NULL; temp = temp->next)
+        {
+            mid = temp;
+            while(temp && temp->val == prev ->val)
+                temp = temp->next;
+            if(temp == NULL)
+                return first;
+            if(mid == temp)
+            {
+                if(first == NULL)
+                    first = temp1 = prev;
+                else
+                {
+                    temp1 -> next = prev;
+                    temp1 = prev;
+                }
+                temp1 -> next = NULL;
+            }
+            prev = temp;
+        }
+
+        return first;
+    }
+};

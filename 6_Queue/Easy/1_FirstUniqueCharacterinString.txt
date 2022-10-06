@@ -1,0 +1,44 @@
+/*
+Title: First Unique Character in a String
+Statement:
+Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.
+
+Example 1:
+Input: s = "leetcode"
+Output: 0
+
+Example 2:
+Input: s = "loveleetcode"
+Output: 2
+
+Example 3:
+Input: s = "aabb"
+Output: -1
+
+1. Method: Queue and Hash table
+    1. Intuition: Character at front will be first non repeating character.
+    2. If frequency of front's char is GT 1, then enqueue the elements till frequency of char is 1.
+
+Note: This solution will work for stream of characters.
+*/
+// Solution:
+class Solution {
+public:
+    int firstUniqChar(string s)
+    {
+        int hashTable[26] = {0};
+        queue<int> queueHolder;
+
+        for(int i = 0; i < s.size(); i++)
+        {
+            hashTable[s[i] - 'a'] += 1;
+            queueHolder.push(i);
+
+            while(!queueHolder.empty() && hashTable[s[queueHolder.front()] - 'a'] > 1)
+                queueHolder.pop();
+        }
+
+        return !queueHolder.empty() ? queueHolder.front() : -1;
+    }
+};
+

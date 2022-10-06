@@ -1,0 +1,54 @@
+/*
+Name: Snakes and Ladders
+Statement:
+Note: Go through YouTube link https://www.youtube.com/watch?v=zWS2fCJGxmU&t=84s to understand problem and logic.
+
+Method : BSF
+*/
+class Solution {
+public:
+    pair<int, int> getIndex(int n, int cell)
+    {
+        int i, j;
+
+        i = n - ((cell - 1) / n) - 1;
+        j = (n % 2) == (i % 2) ? n - 1 - (cell - 1) % n : (cell - 1) % n;
+
+        return {i, j};
+    }
+    int snakesAndLadders(vector<vector<int>>& board)
+    {
+       int n = board.size();
+       unordered_map<int, int> visited;
+       queue<int> q;
+
+       q.push(1);
+       visited[1] = 0;
+
+       while(!q.empty())
+       {
+            int lastStep = q.front();
+            q.pop();
+
+            if(lastStep == n * n)
+                return visited[lastStep];
+
+            for(int i = lastStep + 1; i < min(lastStep + 6, n * n) + 1; i++)
+            {
+                int nextStep = i;
+                int r, c;
+                tie(r, c) = getIndex(n, i);
+
+                if(board[r][c] != -1)
+                    nextStep = board[r][c];
+
+                if(!visited.count(nextStep))
+                {
+                    visited[nextStep] = visited[lastStep] + 1;
+                    q.push(nextStep);
+                }
+            }
+       }
+       return -1;
+    }
+};

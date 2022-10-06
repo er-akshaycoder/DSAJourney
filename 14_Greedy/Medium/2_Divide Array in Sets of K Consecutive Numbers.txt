@@ -1,0 +1,60 @@
+/*
+Name: Divide Array in Sets of K Consecutive Numbers
+Statement:
+Given an array of integers nums and a positive integer k, check whether it is possible to divide this array into sets
+of k consecutive numbers.
+Return true if it is possible. Otherwise, return false.
+
+Example 1:
+Input: nums = [1,2,3,3,4,4,5,6], k = 4
+Output: true
+Explanation: Array can be divided into [1,2,3,4] and [3,4,5,6].
+
+1. Method: Hash Table
+    1. Use Map as hash table for storing occurrences of elements as we need to start from the smallest element for each
+       group.
+    2. Start from first key in map and then go for next k elements.
+    3. While doing this, reduce the occurrence of current element by 1 and if occurrence becomes 0, just remove that
+       entry.
+*/
+// Solution:
+class Solution {
+public:
+    bool isPossibleDivide(vector<int>& nums, int k)
+    {
+        map<int, int> container;
+        int targetGroups = nums.size() / k, groups = 0;
+
+        for(int element : nums)
+            container[element] += 1;
+
+        while(container.size() != 0)
+        {
+            int element = container.begin() -> first;
+            container[element] -= 1;
+            if(container[element] == 0)
+                container.erase(element);
+
+            element += 1;
+            int i = 1;
+            while(i != k)
+            {
+                if(container[element] != 0)
+                {
+                    container[element] -= 1;
+                    if(container[element] == 0)
+                        container.erase(element);
+                }
+                else
+                    return false;
+
+                element += 1;
+                i += 1;
+            }
+            groups += 1;
+        }
+
+        return targetGroups == groups ? true : false;
+    }
+};
+

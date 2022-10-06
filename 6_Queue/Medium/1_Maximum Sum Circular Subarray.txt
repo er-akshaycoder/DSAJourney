@@ -1,0 +1,66 @@
+/*
+Name: Maximum Sum Circular Subarray
+Statement:
+Given a circular integer array nums of length n, return the maximum possible sum of a non-empty subarray of nums.
+
+Example:
+Input: nums = [1,-2,3,-2]
+Output: 3
+Explanation: Subarray [3] has maximum sum 3.
+
+Example:
+Input: nums = [5,-3,5]
+Output: 10
+Explanation: Subarray [5,5] has maximum sum 5 + 5 = 10.
+
+1. Method: Brute-Force
+    1. Use two for loops, use inner as circular loop for n elements
+
+2. Method: Auxiliary Array
+    1. Append second array to first array and find maximum subarray sub with given window size n.
+
+2. Method: Kadane's
+    1. We can use Kadane's algorithm for finding maximum sum subarray.
+    2. This algorithm will give correct answer if subarray is not lying at boundary.
+    3. To Handle this situation of subarray at boundary, We can find minimum subarray sum and will subtract it from
+       total sum of array.
+    4. Here, we need to return max of both approach.
+
+    Note: We can find minimum sum subarray by just changing sign of elements and problem becomes of maximum sum array
+*/
+// Solution:
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums, int n)
+    {
+        int maxSum, currMax;
+
+        maxSum = currMax = nums[0];
+        for(int i = 1; i < n; i++)
+        {
+            currMax = max(nums[i], nums[i] + currMax);
+            maxSum = max(currMax, maxSum);
+        }
+
+        return maxSum;
+    }
+    int maxSubarraySumCircular(vector<int>& nums)
+    {
+        int maxSum = nums[0], n = nums.size(), totalSum = 0;
+        int subArrayAtMiddle = maxSubArray(nums, n);
+
+        for(int i = 0; i < n; i++)
+        {
+            totalSum += nums[i];
+            maxSum = max(maxSum, nums[i]);
+            nums[i] *= -1;
+        }
+
+        if(maxSum < 0)
+            return maxSum;
+
+        int subArrayAtBoundary = totalSum -  (maxSubArray(nums, n) * -1);
+
+        return max(subArrayAtBoundary, subArrayAtMiddle);
+    }
+};

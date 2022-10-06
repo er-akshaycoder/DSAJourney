@@ -1,0 +1,65 @@
+/*
+Name: Jump Game VI
+Statement:
+You are given a 0-indexed integer array nums and an integer k. You are initially standing at index 0. In one move,
+you can jump at most k steps forward without going outside the boundaries of the array. That is, you can jump from
+index i to any index in the range [i + 1, min(n - 1, i + k)] inclusive.
+You want to reach the last index of the array (index n - 1). Your score is the sum of all nums[j] for each index j you
+visited in the array.
+Return the maximum score you can get.
+
+Example 1:
+Input: nums = [1,-1,-2,4,-7,3], k = 2
+Output: 7
+Explanation: You can choose your jumps forming the subsequence [1,-1,4,3]
+
+Example 2:
+Input: nums = [10,-5,-2,4,0,3], k = 3
+Output: 17
+Explanation: You can choose your jumps forming the subsequence [10,4,3]
+
+1. Method: Naive
+    1. Use two loops, one for n and second for k
+    2. For inner loop, if current element is positive then add it into answer else check for future elements of that
+       window for maximum element.
+
+2. Method: Priority Queue
+    1. We can use priority queue to find maximum element of current window.
+
+3. Method: DeQueue
+    * Intuition: We have to maximize the sum of current window of size k by taking atleast one element from window.
+    1. Two use case:
+        nums = [10, 8, 9, 5, ...]
+        Here we can form maximum window by summing all elements of current window.
+
+        nums = [10, -1, -2, -3, ....]
+        Here, we have to take single element only as 10 can form maximum window with 10 only
+
+    2. We can use doubly ended queue, as we have to remove elements from front for maintaining a window of size k and
+       have to remove element from back if current Step form maximum than previous.
+*/
+// Solution:
+class Solution {
+public:
+    int maxResult(vector<int>& nums, int k)
+    {
+        deque<pair<int, int>> container;
+        int step;
+
+        container.push_back({0, nums[0]});
+        for(int i = 1; i < nums.size(); i++)
+        {
+            if(i - container.front().first > k)
+                container.pop_front();
+
+            step = container.front().second + nums[i];
+            while(!container.empty() && step >= container.back().second)
+                container.pop_back();
+
+            container.push_back({i, step});
+        }
+
+        return container.back().second;
+    }
+};
+

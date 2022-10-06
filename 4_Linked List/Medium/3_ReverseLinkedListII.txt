@@ -1,0 +1,62 @@
+/*
+Name: Reverse Linked List II
+Statement:
+Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the
+list from position left to position right, and return the reversed list.
+Example 1:
+Input: head = [1,2,3,4,5], left = 2, right = 4
+Output: [1,4,3,2,5]
+
+Method 1: Efficient(Single Pass)
+1. Scan list til you reach left position.
+2. call reverse function for left positioned node and in reverse function store the next node of last node, say last.
+3. Assign head of reversed list to prev pointer and assign last node to current next.
+4. Break the loop.
+*/
+
+//Implementation:
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head, int left, int right, ListNode** last)
+    {
+        ListNode *temp, *back, *mid;
+        int i = (right - left) + 1;
+        temp = head;
+        back = NULL;
+
+        while(temp && i--)
+        {
+            if(i == 0)
+                *last = temp -> next;
+            mid = temp;
+            temp = temp -> next;
+            mid -> next = back;
+            back = mid;
+        }
+        return back;
+    }
+
+    ListNode* reverseBetween(ListNode* head, int left, int right)
+    {
+        ListNode *temp = head, *prev = NULL, *last = NULL;
+        int i = 1;
+
+        while(temp)
+        {
+            if(i == left)
+            {
+                if(prev != NULL)
+                    prev->next = reverseList(temp, left, right, &last);
+                else
+                    head = reverseList(temp, left, right, &last);
+                temp -> next = last;
+                break;
+            }
+            i += 1;
+            prev = temp;
+            temp = temp -> next;
+        }
+        return head;
+    }
+};
+

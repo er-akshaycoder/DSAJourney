@@ -1,0 +1,54 @@
+/*
+Name: Remove Outermost Parentheses
+Statement:
+Return s after removing the outermost parentheses of every primitive string in the primitive decomposition of s.
+Example 1:
+Input: s = "(()())(())"
+Output: "()()()"
+Explanation:
+The input string is "(()())(())", with primitive decomposition "(()())" + "(())".
+After removing outer parentheses of each part, this is "()()" + "()" = "()()()".
+
+Example 2:
+Input: s = "(()())(())(()(()))"
+Output: "()()()()(())"
+Explanation:
+The input string is "(()())(())(()(()))", with primitive decomposition "(()())" + "(())" + "(()(()))".
+After removing outer parentheses of each part, this is "()()" + "()" + "()(())" = "()()()()(())".
+
+Example 3:
+Input: s = "()()"
+Output: ""
+Explanation:
+The input string is "()()", with primitive decomposition "()" + "()".
+After removing outer parentheses of each part, this is "" + "" = "".
+
+Method 1: Stack:
+1. If current character is opening bracket, then push it onto stack else pop a character from stack.
+2. Output the current character if stack has 1 or more entries, else don't do anything.
+*/
+// Solution:
+class Solution {
+public:
+    string removeOuterParentheses(string s)
+    {
+        stack<char> stackContainer;
+        string answer;
+
+        for(int i = 0; i < s.size(); i++)
+        {
+            if(s[i] == '(')
+                stackContainer.push(s[i]);
+            else
+                stackContainer.pop();
+
+            if((stackContainer.size() > 1 && s[i] == '(') || (stackContainer.size() >= 1 && s[i] == ')'))
+                answer += s[i];
+        }
+
+        return answer;
+    }
+};
+
+Note: 2nd condition at line no 45 is for handling a situation when an entry get popped if character is closing bracket
+and first condition i.e. size > 1 will get fails even one entry is there in stack.

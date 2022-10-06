@@ -1,0 +1,44 @@
+/*
+Name: Max Value of Equation
+Statement:
+You are given an array points containing the coordinates of points on a 2D plane, sorted by the x-values, where
+points[i] = [xi, yi] such that xi < xj for all 1  <= i < j <= points.length. You are also given an integer k.
+Return the maximum value of the equation yi + yj + |xi - xj| where |xi - xj| <= k and 1 <= i < j <= points.length.
+
+It is guaranteed that there exists at least one pair of points that satisfy the constraint |xi - xj| <= k.
+
+Example 1:
+Input: points = [[1,3],[2,0],[5,10],[6,-10]], k = 1
+Output: 4
+
+1. Method: Priority Queue
+    1. We can write above equation as yi + yj + xj - xi as xj always greater than xi
+    2. We can modify it to  yj + xj + yi - xi by just changing its order.
+    3. Now [xj, yj] will be current entry, and we have to pickup maximum yi - xi from previous entries.
+    4. We can use max heap to get maximum, and also we have to discard if previous xi is not matching with given
+       condition and hence we also need to enter xi into priority queue.
+
+*/
+// Solution:
+class Solution {
+public:
+    int findMaxValueOfEquation(vector<vector<int>>& points, int k)
+    {
+        priority_queue<pair<int, int>> container;
+        int answer = INT_MIN;
+        for(const auto &point : points)
+        {
+            int x = point[0];
+            int y = point[1];
+
+            while(!container.empty() && x - container.top().second > k)
+                container.pop();
+
+            if(!container.empty())
+            answer = max(answer, x + y + container.top().first);
+            container.push({y - x, x});
+        }
+
+        return answer;
+    }
+};

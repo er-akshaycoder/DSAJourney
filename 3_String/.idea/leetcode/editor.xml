@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="LeetcodeEditor">
+    <option name="projectConfig">
+      <map>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[1004]Max Consecutive Ones III.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[1004]Max Consecutive Ones III.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[1004]Max Consecutive Ones III.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[1013]Partition Array Into Three Parts With Equal Sum.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[1013]Partition Array Into Three Parts With Equal Sum.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[1013]Partition Array Into Three Parts With Equal Sum.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[1016]Binary String With Substrings Representing 1 To N.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[1016]Binary String With Substrings Representing 1 To N.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[1016]Binary String With Substrings Representing 1 To N.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[1023]Camelcase Matching.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[1023]Camelcase Matching.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[1023]Camelcase Matching.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[1024]Video Stitching.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[1024]Video Stitching.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[1024]Video Stitching.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[1033]Moving Stones Until Consecutive.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[1033]Moving Stones Until Consecutive.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[1033]Moving Stones Until Consecutive.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[1040]Moving Stones Until Consecutive II.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[1040]Moving Stones Until Consecutive II.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[1040]Moving Stones Until Consecutive II.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[118]Pascal's Triangle.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[118]Pascal's Triangle.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[118]Pascal's Triangle.java" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[121]Best Time to Buy and Sell Stock.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[121]Best Time to Buy and Sell Stock.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[121]Best Time to Buy and Sell Stock.java" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[14]Longest Common Prefix.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[14]Longest Common Prefix.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[14]Longest Common Prefix.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[15]3Sum.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[15]3Sum.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[15]3Sum.java" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[165]Compare Version Numbers.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[165]Compare Version Numbers.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[165]Compare Version Numbers.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[167]Two Sum II - Input Array Is Sorted.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[167]Two Sum II - Input Array Is Sorted.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[167]Two Sum II - Input Array Is Sorted.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[16]3Sum Closest.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[16]3Sum Closest.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[16]3Sum Closest.java" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[209]Minimum Size Subarray Sum.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[209]Minimum Size Subarray Sum.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[209]Minimum Size Subarray Sum.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[228]Summary Ranges.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[228]Summary Ranges.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[228]Summary Ranges.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[229]Majority Element II.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[229]Majority Element II.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[229]Majority Element II.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[242]Valid Anagram.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[242]Valid Anagram.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[242]Valid Anagram.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[273]Integer to English Words.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[273]Integer to English Words.md" />
+              <option name="frontendQuestionId" value="leetcode.com273" />
+              <option name="host" value="leetcode.com" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[273]Integer to English Words.cpp" />
+              <option name="titleSlug" value="integer-to-english-words" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[283]Move Zeroes.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[283]Move Zeroes.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[283]Move Zeroes.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[287]Find the Duplicate Number.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[287]Find the Duplicate Number.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[287]Find the Duplicate Number.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[289]Game of Life.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[289]Game of Life.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[289]Game of Life.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[306]Additive Number.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[306]Additive Number.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[306]Additive Number.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[31]Next Permutation.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[31]Next Permutation.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[31]Next Permutation.java" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[349]Intersection of Two Arrays.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[349]Intersection of Two Arrays.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[349]Intersection of Two Arrays.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[396]Rotate Function.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[396]Rotate Function.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[396]Rotate Function.java" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[401]Binary Watch.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[401]Binary Watch.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[401]Binary Watch.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[405]Convert a Number to Hexadecimal.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[405]Convert a Number to Hexadecimal.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[405]Convert a Number to Hexadecimal.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[412]Fizz Buzz.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[412]Fizz Buzz.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[412]Fizz Buzz.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[41]First Missing Positive.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[41]First Missing Positive.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[41]First Missing Positive.java" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[420]Strong Password Checker.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[420]Strong Password Checker.md" />
+              <option name="frontendQuestionId" value="leetcode.com420" />
+              <option name="host" value="leetcode.com" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[420]Strong Password Checker.cpp" />
+              <option name="titleSlug" value="strong-password-checker" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[421]Maximum XOR of Two Numbers in an Array.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[421]Maximum XOR of Two Numbers in an Array.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[421]Maximum XOR of Two Numbers in an Array.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[434]Number of Segments in a String.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[434]Number of Segments in a String.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[434]Number of Segments in a String.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[43]Multiply Strings.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[43]Multiply Strings.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[43]Multiply Strings.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[448]Find All Numbers Disappeared in an Array.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[448]Find All Numbers Disappeared in an Array.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[448]Find All Numbers Disappeared in an Array.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[448]Find All Numbers Disappeared in an Array.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[448]Find All Numbers Disappeared in an Array.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[448]Find All Numbers Disappeared in an Array.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[457]Circular Array Loop.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[457]Circular Array Loop.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[457]Circular Array Loop.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[468]Validate IP Address.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[468]Validate IP Address.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[468]Validate IP Address.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[482]License Key Formatting.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[482]License Key Formatting.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[482]License Key Formatting.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[526]Beautiful Arrangement.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[526]Beautiful Arrangement.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[526]Beautiful Arrangement.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[539]Minimum Time Difference.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[539]Minimum Time Difference.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[539]Minimum Time Difference.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[564]Find the Closest Palindrome.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[564]Find the Closest Palindrome.md" />
+              <option name="frontendQuestionId" value="leetcode.com564" />
+              <option name="host" value="leetcode.com" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[564]Find the Closest Palindrome.cpp" />
+              <option name="titleSlug" value="find-the-closest-palindrome" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[565]Array Nesting.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[565]Array Nesting.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[565]Array Nesting.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[581]Shortest Unsorted Continuous Subarray.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[581]Shortest Unsorted Continuous Subarray.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[581]Shortest Unsorted Continuous Subarray.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[58]Length of Last Word.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[58]Length of Last Word.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[58]Length of Last Word.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[605]Can Place Flowers.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[605]Can Place Flowers.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[605]Can Place Flowers.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[648]Replace Words.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[648]Replace Words.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[648]Replace Words.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[66]Plus One.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[66]Plus One.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[66]Plus One.java" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[670]Maximum Swap.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[670]Maximum Swap.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[670]Maximum Swap.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[678]Valid Parenthesis String.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[678]Valid Parenthesis String.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[678]Valid Parenthesis String.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[67]Add Binary.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[67]Add Binary.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[67]Add Binary.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[68]Text Justification.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[68]Text Justification.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[68]Text Justification.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[696]Count Binary Substrings.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[696]Count Binary Substrings.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[696]Count Binary Substrings.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[697]Degree of an Array.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[697]Degree of an Array.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[697]Degree of an Array.java" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[6]Zigzag Conversion.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[6]Zigzag Conversion.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[6]Zigzag Conversion.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[713]Subarray Product Less Than K.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[713]Subarray Product Less Than K.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[713]Subarray Product Less Than K.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[717]1-bit and 2-bit Characters.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[717]1-bit and 2-bit Characters.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[717]1-bit and 2-bit Characters.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[722]Remove Comments.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[722]Remove Comments.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[722]Remove Comments.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[729]My Calendar I.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[729]My Calendar I.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[729]My Calendar I.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[769]Max Chunks To Make Sorted.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[769]Max Chunks To Make Sorted.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[769]Max Chunks To Make Sorted.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[778]Swim in Rising Water.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[778]Swim in Rising Water.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[778]Swim in Rising Water.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[791]Custom Sort String.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[791]Custom Sort String.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[791]Custom Sort String.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[794]Valid Tic-Tac-Toe State.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[794]Valid Tic-Tac-Toe State.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[794]Valid Tic-Tac-Toe State.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[809]Expressive Words.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[809]Expressive Words.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[809]Expressive Words.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[80]Remove Duplicates from Sorted Array II.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[80]Remove Duplicates from Sorted Array II.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[80]Remove Duplicates from Sorted Array II.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[820]Short Encoding of Words.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[820]Short Encoding of Words.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[820]Short Encoding of Words.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[821]Shortest Distance to a Character.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[821]Shortest Distance to a Character.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[821]Shortest Distance to a Character.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[824]Goat Latin.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[824]Goat Latin.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[824]Goat Latin.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[826]Most Profit Assigning Work.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[826]Most Profit Assigning Work.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[826]Most Profit Assigning Work.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[831]Masking Personal Information.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[831]Masking Personal Information.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[831]Masking Personal Information.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[833]Find And Replace in String.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[833]Find And Replace in String.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[833]Find And Replace in String.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[839]Similar String Groups.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[839]Similar String Groups.md" />
+              <option name="frontendQuestionId" value="leetcode.com839" />
+              <option name="host" value="leetcode.com" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[839]Similar String Groups.cpp" />
+              <option name="titleSlug" value="similar-string-groups" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[848]Shifting Letters.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[848]Shifting Letters.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[848]Shifting Letters.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[859]Buddy Strings.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[859]Buddy Strings.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[859]Buddy Strings.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[880]Decoded String at Index.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[880]Decoded String at Index.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[880]Decoded String at Index.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[884]Uncommon Words from Two Sentences.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[884]Uncommon Words from Two Sentences.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[884]Uncommon Words from Two Sentences.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[916]Word Subsets.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[916]Word Subsets.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[916]Word Subsets.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[927]Three Equal Parts.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[927]Three Equal Parts.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[927]Three Equal Parts.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[932]Beautiful Array.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[932]Beautiful Array.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[932]Beautiful Array.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[942]DI String Match.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[942]DI String Match.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[942]DI String Match.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[944]Delete Columns to Make Sorted.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[944]Delete Columns to Make Sorted.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[944]Delete Columns to Make Sorted.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[952]Largest Component Size by Common Factor.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[952]Largest Component Size by Common Factor.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[952]Largest Component Size by Common Factor.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[954]Array of Doubled Pairs.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[954]Array of Doubled Pairs.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[954]Array of Doubled Pairs.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[961]N-Repeated Element in Size 2N Array.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[961]N-Repeated Element in Size 2N Array.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[961]N-Repeated Element in Size 2N Array.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[963]Minimum Area Rectangle II.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[963]Minimum Area Rectangle II.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[963]Minimum Area Rectangle II.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[977]Squares of a Sorted Array.cpp">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/doc/content/[977]Squares of a Sorted Array.md" />
+              <option name="path" value="$PROJECT_DIR$/../../LEETCODEREPO/leetcode/editor/en/[977]Squares of a Sorted Array.cpp" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
